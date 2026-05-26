@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" role="img" aria-labelledby="title desc">
+  <title id="title">Logo ACIMCO</title>
+  <desc id="desc">Logo institucional ACIMCO con engranaje, casco y wordmark.</desc>
+  <defs>
+    <linearGradient id="acimcoBlue" x1="70" x2="455" y1="40" y2="365" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12A2DC"/>
+      <stop offset="1" stop-color="#087BB7"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="7" stdDeviation="0" flood-color="#075D8D" flood-opacity=".95"/>
+    </filter>
+  </defs>
+
+  <g fill="url(#acimcoBlue)">
+    <path d="M299 26 337 39l-4 27 22 16 26-11 21 35-21 18 5 27 25 10-7 40-28 1-14 23 13 25-31 25-21-18-27 8-7 27h-40l-8-27-27-8-21 18-31-25 13-25-14-23-28-1-7-40 26-10 5-27-22-18 22-35 27 11 22-16-4-27 38-13 14 24h28l16-24Zm-31 62c-54 0-98 39-98 87s44 87 98 87 98-39 98-87-44-87-98-87Z"/>
+    <path d="M268 114c-40 0-72 28-72 62h144c0-34-32-62-72-62Zm-42 52c5-21 21-34 42-34 16 0 29 7 37 19l-27 15h-52Z"/>
+    <path d="M291 139c2-2 6-2 8 1 1 2 1 5-1 7l-32 27c-2 2-5 2-7 0s-2-6 0-8l32-27Z"/>
+  </g>
+
+  <g filter="url(#softShadow)" fill="url(#acimcoBlue)">
+    <path d="M78 288h58l-5 26H98l-4 22h29l-4 24H89l-6 32H29l20-104h29Z"/>
+    <path d="M134 288h51c31 0 46 14 42 39h-50c1-6-2-10-10-10h-8c-9 0-14 5-16 14l-4 21c-2 9 2 14 11 14h8c8 0 13-4 15-11h50c-7 26-27 39-60 39h-51c-25 0-37-14-32-39l5-28c5-25 22-39 49-39Z"/>
+    <path d="M239 288h52l-20 104h-52l20-104Zm17-35h44l-5 25h-44l5-25Z"/>
+    <path d="M302 288h63l8 39 23-39h64l-20 104h-49l10-51-31 51h-34l-12-51-10 51h-32l20-104Z"/>
+    <path d="M468 288h23c14 0 23 4 28 12v92h-37c-25 0-37-14-32-39l5-28c5-24 22-37 13-37Zm5 42-4 22c-2 9 2 14 11 14h9c9 0 14-5 16-14l4-22c2-9-2-14-11-14h-9c-9 0-14 5-16 14Z"/>
+  </g>
+</svg>

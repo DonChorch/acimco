@@ -57,6 +57,7 @@ No requiere backend ni instalacion de dependencias.
 Los visuales principales son SVG propios embebidos en la web:
 
 - Hero: red regional de materiales de construccion.
+- Logo ACIMCO vectorizado a partir de la referencia provista por el cliente.
 - Mapa abstracto de La Plata, Berisso y Ensenada.
 - Corralon moderno.
 - Reunion empresaria sectorial.
@@ -85,4 +86,3 @@ Los visuales principales son SVG propios embebidos en la web:
 - El diseno evita lenguaje burocratico y usa bloques escaneables para duenos de pymes.
 - La paleta combina azul institucional con acentos verdes y amarillos para destacar accion, oportunidad y crecimiento.
 - Todos los datos sensibles o no confirmados se presentan como demo, piloto o simulados.
-

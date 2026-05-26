@@ -2,6 +2,7 @@
 
 - [x] La web se puede abrir y navegar completa.
 - [x] Header con logo demo, bajada, navegacion y CTAs.
+- [x] Logo ACIMCO integrado en header, hero, credencial, sticker y kit imprimible.
 - [x] Hero con propuesta clara, metricas demo y visual institucional.
 - [x] Seccion problema con dolores concretos del sector.
 - [x] Beneficios claros para empresas del rubro.
@@ -23,4 +24,3 @@
 - [x] Responsive desktop, tablet y mobile mediante CSS fluido.
 - [x] No se usan imagenes con copyright ni logos reales de terceros.
 - [x] No se prometen beneficios legales, financieros o comerciales garantizados.
-
