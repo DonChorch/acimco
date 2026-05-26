@@ -1,0 +1,11 @@
+{
+  "name": "acimco-web-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Web demo institucional/comercial para captacion de afiliados ACIMCO.",
+  "scripts": {
+    "start": "python -m http.server 4173",
+    "dev": "python -m http.server 4173",
+    "preview": "python -m http.server 4173"
+  }
+}

@@ -1,0 +1,26 @@
+# Checklist final de QA
+
+- [x] La web se puede abrir y navegar completa.
+- [x] Header con logo demo, bajada, navegacion y CTAs.
+- [x] Hero con propuesta clara, metricas demo y visual institucional.
+- [x] Seccion problema con dolores concretos del sector.
+- [x] Beneficios claros para empresas del rubro.
+- [x] Servicios recurrentes con tabs y estados demo.
+- [x] Directorio demo con filtros funcionales.
+- [x] Informes e inteligencia sectorial con datos simulados aclarados.
+- [x] Capacitaciones con duracion, modalidad, publico y beneficio.
+- [x] Casos de uso por tipo de empresa.
+- [x] Afiliacion explicada en pasos y categorias demo.
+- [x] Formulario con validacion simulada.
+- [x] Modal de confirmacion de envio.
+- [x] Boton flotante de WhatsApp.
+- [x] Kit comercial para reunion de ventas.
+- [x] Mini deck embebido de 6 slides.
+- [x] Boton de descarga demo.
+- [x] Version imprimible del kit comercial.
+- [x] Textos definitivos sin lorem ipsum.
+- [x] SEO basico, Open Graph y favicon demo.
+- [x] Responsive desktop, tablet y mobile mediante CSS fluido.
+- [x] No se usan imagenes con copyright ni logos reales de terceros.
+- [x] No se prometen beneficios legales, financieros o comerciales garantizados.
+
