@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" role="img" aria-labelledby="t d">
+  <title id="t">Hero visual regional ACIMCO</title>
+  <desc id="d">Red regional con mapa abstracto, corralon, camion, tablero de precios y reunion empresaria.</desc>
+  <rect width="900" height="640" rx="22" fill="#EAF8FC"/>
+  <path d="M115 430C250 265 405 280 610 155" fill="none" stroke="#B8E6F5" stroke-width="34" stroke-linecap="round"/>
+  <path d="M170 508C350 390 485 430 735 292" fill="none" stroke="#D8F2FA" stroke-width="26" stroke-linecap="round"/>
+  <g fill="none" stroke="#003A5D" stroke-width="4" stroke-dasharray="10 12"><path d="M246 212 455 165 610 305 455 440 284 365"/><path d="M455 165v275"/></g>
+  <g transform="translate(92 120)"><circle cx="120" cy="94" r="70" fill="#003A5D"/><path d="M78 116V72h84v44M99 116V91h42v25" stroke="#fff" stroke-width="10" fill="none"/><rect x="42" y="190" width="190" height="78" rx="10" fill="#fff" stroke="#C5E9F4"/><path d="M42 190h190l-28-42H68z" fill="#00A9E0"/><rect x="70" y="217" width="44" height="51" fill="#EAF8FC"/><rect x="128" y="225" width="72" height="16" rx="8" fill="#6FAE2E"/></g>
+  <g transform="translate(562 330)"><rect x="0" y="38" width="130" height="60" rx="8" fill="#003A5D"/><path d="M130 58h55l38 32v8h-93z" fill="#00A9E0"/><rect x="22" y="8" width="75" height="30" rx="6" fill="#fff" stroke="#C5E9F4"/><circle cx="42" cy="108" r="17" fill="#fff" stroke="#003A5D" stroke-width="8"/><circle cx="176" cy="108" r="17" fill="#fff" stroke="#003A5D" stroke-width="8"/></g>
+  <g transform="translate(482 120)"><rect width="218" height="150" rx="18" fill="#fff" stroke="#C5E9F4"/><path d="M33 112V68M79 112V38M125 112V82M171 112V54" stroke="#00A9E0" stroke-width="16" stroke-linecap="round"/><path d="M28 38h84" stroke="#6FAE2E" stroke-width="9" stroke-linecap="round"/><text x="28" y="29" fill="#003A5D" font-family="Inter,Arial" font-size="17" font-weight="800">Pulso demo</text></g>
+  <g transform="translate(305 356)"><rect width="210" height="128" rx="18" fill="#fff" stroke="#C5E9F4"/><circle cx="70" cy="50" r="22" fill="#00A9E0"/><circle cx="114" cy="44" r="22" fill="#003A5D"/><circle cx="154" cy="55" r="22" fill="#6FAE2E"/><ellipse cx="112" cy="92" rx="74" ry="20" fill="#EAF8FC"/><path d="M70 88h83" stroke="#003A5D" stroke-width="8" stroke-linecap="round"/></g>
+  <g transform="translate(118 418)"><circle cx="0" cy="0" r="12" fill="#003A5D"/><text x="22" y="5" fill="#003A5D" font-family="Inter,Arial" font-size="20" font-weight="800">La Plata</text></g>
+  <g transform="translate(596 142)"><circle cx="0" cy="0" r="12" fill="#00A9E0"/><text x="22" y="5" fill="#003A5D" font-family="Inter,Arial" font-size="20" font-weight="800">Berisso</text></g>
+  <g transform="translate(744 292)"><circle cx="0" cy="0" r="12" fill="#6FAE2E"/><text x="-112" y="40" fill="#003A5D" font-family="Inter,Arial" font-size="20" font-weight="800">Ensenada</text></g>
+</svg>

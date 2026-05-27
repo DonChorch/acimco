@@ -3,44 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kit comercial ACIMCO</title>
-    <link rel="icon" href="assets/favicon.svg" />
-    <link rel="stylesheet" href="src/styles.css" />
+    <title>ACIMCO | Propuesta demo para socios</title>
+    <link rel="icon" href="/favicon.svg" />
+    <style>
+      body { margin: 0; background: #f6f8fb; color: #1f2933; font-family: Inter, Arial, sans-serif; }
+      main { max-width: 980px; margin: 24px auto; background: #fff; padding: 34px; }
+      header { background: #003a5d; color: #fff; border-radius: 8px; padding: 28px; }
+      img { width: 160px; background: #fff; border-radius: 8px; padding: 8px; }
+      h1 { font-size: 42px; line-height: 1; margin: 24px 0 10px; }
+      h2 { color: #003a5d; margin-top: 28px; }
+      .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      article { border: 1px solid #d7e3ee; border-radius: 8px; padding: 18px; }
+      .cta { background: #eaf8fc; border-color: #00a9e0; }
+      @media print { body { background: #fff; } main { margin: 0; max-width: none; } }
+      @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } main { padding: 18px; } }
+    </style>
   </head>
-  <body class="print-body">
-    <main class="print-page">
-      <section class="print-hero">
-        <img class="print-logo" src="assets/acimco-logo.svg" alt="ACIMCO" />
-        <p class="eyebrow">Kit comercial demo</p>
-        <h1>ACIMCO: red regional de materiales de construccion</h1>
-        <p>Una herramienta para presentar la propuesta de afiliacion a comercios, industrias y proveedores de La Plata, Berisso y Ensenada.</p>
-      </section>
-      <section class="print-grid">
-        <article>
-          <h2>Propuesta de valor</h2>
-          <p>ACIMCO representa, informa y conecta a empresas del rubro materiales de construccion para profesionalizar la actividad regional.</p>
-        </article>
-        <article>
-          <h2>Pitch de 60 segundos</h2>
-          <p>ACIMCO no es solo una camara: es una red regional para que las empresas de materiales de construccion esten mejor representadas, mejor informadas y mejor conectadas. La afiliacion permite acceder a informacion sectorial, asesoramiento, capacitaciones, eventos, beneficios comerciales y visibilidad dentro del ecosistema de La Plata, Berisso y Ensenada.</p>
-        </article>
-        <article>
-          <h2>Beneficios principales</h2>
-          <ul>
-            <li>Representacion sectorial.</li>
-            <li>Informacion de mercado.</li>
-            <li>Asesoramiento empresario.</li>
-            <li>Capacitaciones practicas.</li>
-            <li>Red de negocios.</li>
-            <li>Visibilidad institucional.</li>
-          </ul>
-        </article>
-        <article>
-          <h2>Cierre sugerido</h2>
-          <p>El proximo paso es coordinar una reunion breve para conocer la empresa, identificar su categoria de socio y activar los beneficios iniciales.</p>
-        </article>
-      </section>
-      <button class="btn primary no-print" onclick="window.print()">Imprimir kit</button>
+  <body>
+    <main>
+      <header>
+        <img src="/SVG/logo.svg" alt="ACIMCO" />
+        <h1>Propuesta demo para nuevos socios</h1>
+        <p>ACIMCO es la red regional que representa, informa, conecta y fortalece a comercios, industrias y proveedores de materiales de construccion.</p>
+      </header>
+      <h2>Pitch de 60 segundos</h2>
+      <p>ACIMCO no es solo una camara: es una red regional para que las empresas de materiales de construccion esten mejor representadas, mejor informadas y mejor conectadas. La afiliacion permite acceder a informacion sectorial, asesoramiento, capacitaciones, eventos, beneficios comerciales y visibilidad dentro del ecosistema de La Plata, Berisso y Ensenada.</p>
+      <h2>Beneficios principales</h2>
+      <div class="grid">
+        <article>Representacion sectorial ante temas comunes del rubro.</article>
+        <article>Informacion de mercado, alertas e informes demo.</article>
+        <article>Asesoramiento legal, laboral, impositivo, municipal y tecnico.</article>
+        <article>Capacitaciones, eventos, comites y rondas de negocios.</article>
+        <article>Directorio de socios y visibilidad institucional.</article>
+        <article>Club de beneficios y observatorio normativo demo.</article>
+      </div>
+      <h2>Empresa no asociada vs empresa asociada</h2>
+      <div class="grid">
+        <article>Decide sola, con informacion dispersa y menor visibilidad sectorial.</article>
+        <article class="cta">Accede a red, informacion, asesoramiento, capacitaciones, beneficios y representacion.</article>
+      </div>
+      <h2>Proximo paso</h2>
+      <article class="cta">Coordinar una reunion breve de afiliacion para conocer rubro, localidad, necesidades y categoria demo de socio.</article>
     </main>
   </body>
 </html>

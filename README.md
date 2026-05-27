@@ -1,88 +1,91 @@
 # ACIMCO Web Demo
 
-Landing institucional/comercial demo para ACIMCO, orientada a una reunion de ventas y captacion de nuevas afiliaciones en La Plata, Berisso y Ensenada.
+Landing institucional/comercial demo para ACIMCO, orientada a captar nuevos afiliados en La Plata, Berisso y Ensenada.
 
-## Como abrir
+## Tecnologia
 
-Opcion simple:
+- React + Vite.
+- Tailwind CSS.
+- Componentes reutilizables y datos demo en `src/main.jsx`.
+- Sin backend.
+- Formulario con simulacion de envio.
+- Assets SVG propios sin copyright.
+- Logo real cargado desde `assets/SVG/logo.svg`.
 
-1. Abrir `index.html` en el navegador.
-
-Opcion con servidor local:
+## Instalacion
 
 ```bash
-python -m http.server 4173
+npm install
 ```
 
-Luego abrir:
+## Ejecucion
+
+```bash
+npm run dev
+```
+
+Abrir:
 
 ```text
-http://localhost:4173
+http://127.0.0.1:4173
 ```
 
-No requiere backend ni instalacion de dependencias.
+## Build
+
+```bash
+npm run build
+```
 
 ## Estructura
 
 ```text
 .
-├── index.html
-├── print-kit.html
-├── package.json
-├── README.md
-├── QA-CHECKLIST.md
-├── src
-│   ├── styles.css
-│   └── script.js
-└── assets
-    └── favicon.svg
+|-- index.html
+|-- package.json
+|-- postcss.config.js
+|-- tailwind.config.js
+|-- vite.config.js
+|-- print-kit.html
+|-- QA-CHECKLIST.md
+|-- README.md
+|-- docs
+|   `-- kit-comercial-acimco.md
+|-- src
+|   |-- main.jsx
+|   `-- styles.css
+`-- assets
+    |-- SVG/logo.svg
+    |-- favicon.svg
+    |-- hero-regional.svg
+    |-- mapa-regional.svg
+    |-- corralon.svg
+    |-- reunion-sectorial.svg
+    |-- dashboard-precios.svg
+    |-- capacitacion.svg
+    |-- logistica.svg
+    |-- informe-pulso.svg
+    |-- credencial-socio.svg
+    |-- sticker-asociada.svg
+    `-- pattern-construccion.svg
 ```
 
-## Funcionalidades incluidas
+## Funcionalidades
 
-- Landing responsive completa.
-- Hero institucional con ilustracion SVG propia.
-- Beneficios, servicios, directorio demo, informes, capacitaciones y casos de uso.
-- Formulario de afiliacion con validacion y modal de confirmacion.
-- Directorio con filtros por rubro, localidad y tipo de empresa.
-- Tabs de servicios.
-- Boton flotante de WhatsApp.
-- Kit comercial para reunion de ventas.
-- Mini deck embebido de 6 slides.
-- Botones de descarga demo para propuesta y kit imprimible.
-- SEO basico, Open Graph y favicon demo.
-
-## Assets generados
-
-Los visuales principales son SVG propios embebidos en la web:
-
-- Hero: red regional de materiales de construccion.
-- Logo ACIMCO vectorizado a partir de la referencia provista por el cliente.
-- Mapa abstracto de La Plata, Berisso y Ensenada.
-- Corralon moderno.
-- Reunion empresaria sectorial.
-- Tablero de precios/materiales.
-- Capacitacion a vendedores.
-- Logistica y camion de materiales.
-- Mockup de informe "Pulso de Materiales".
-- Mockup de credencial "Socio ACIMCO".
-- Mockup de sticker "Empresa asociada ACIMCO".
-- Sistema de iconos lineales SVG consistente.
-
-## Capturas sugeridas para la reunion
-
-1. Hero con CTA "Solicitar afiliacion".
-2. Seccion "Que gana tu empresa al asociarse".
-3. Servicios con tabs.
-4. Directorio demo filtrable.
-5. Informe "Pulso de Materiales Gran La Plata".
-6. Kit comercial y mini deck.
-7. Formulario de afiliacion con modal de confirmacion.
+- Header sticky con navegacion por anclas.
+- Hero con propuesta de valor, metricas demo y visual regional.
+- Problemas, beneficios, servicios, directorio, informes, capacitaciones, calendario demo, territorio, casos de uso, afiliacion, FAQ y footer.
+- Directorio demo con filtros por localidad, rubro y tipo.
+- Servicios con tabs.
+- Formulario validado y modal de confirmacion.
+- Boton flotante de WhatsApp con mensaje precargado.
+- Kit comercial guardado para uso posterior en `docs/kit-comercial-acimco.md`.
+- Pagina imprimible de propuesta comercial conservada en `print-kit.html`, sin CTA visible en la landing.
+- SEO basico, Open Graph y favicon.
 
 ## Decisiones UX/UI
 
-- Se priorizo conversion: CTAs visibles en header, hero, beneficios, directorio, kit y formulario.
-- La narrativa baja de lo institucional a lo operativo: representacion, informacion, asesoramiento, capacitacion, red y visibilidad.
-- El diseno evita lenguaje burocratico y usa bloques escaneables para duenos de pymes.
-- La paleta combina azul institucional con acentos verdes y amarillos para destacar accion, oportunidad y crecimiento.
-- Todos los datos sensibles o no confirmados se presentan como demo, piloto o simulados.
+- Narrativa orientada a conversion: problema, valor, beneficios, servicios y solicitud.
+- Lenguaje claro para pymes del rubro, evitando tono burocratico.
+- Paleta basada en el celeste ACIMCO, azul institucional profundo y verde como acento de accion.
+- Cards compactas, CTAs recurrentes, secciones escaneables y foco B2B institucional.
+- Datos de informes, socios y actividad marcados como demo o simulados.

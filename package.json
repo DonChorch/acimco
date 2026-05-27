@@ -1,11 +1,23 @@
 {
   "name": "acimco-web-demo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
+  "type": "module",
   "description": "Web demo institucional/comercial para captacion de afiliados ACIMCO.",
   "scripts": {
-    "start": "python -m http.server 4173",
-    "dev": "python -m http.server 4173",
-    "preview": "python -m http.server 4173"
+    "dev": "vite --host 127.0.0.1 --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "vite": "^7.2.6",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
   }
 }

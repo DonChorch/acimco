@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430">
+  <rect width="760" height="430" rx="18" fill="#EAF8FC"/>
+  <path d="M90 300C210 150 375 170 560 70" fill="none" stroke="#B8E6F5" stroke-width="30" stroke-linecap="round"/>
+  <path d="M155 350C300 250 420 285 650 170" fill="none" stroke="#D8F2FA" stroke-width="22" stroke-linecap="round"/>
+  <g font-family="Inter,Arial" font-weight="800" font-size="22" fill="#003A5D" text-anchor="middle">
+    <g><circle cx="292" cy="154" r="24" fill="#003A5D"/><text x="292" y="205">La Plata</text></g>
+    <g><circle cx="515" cy="98" r="22" fill="#00A9E0"/><text x="515" y="148">Berisso</text></g>
+    <g><circle cx="595" cy="235" r="24" fill="#6FAE2E"/><text x="595" y="288">Ensenada</text></g>
+    <g><circle cx="170" cy="230" r="15" fill="#005B7F"/><text x="170" y="270" font-size="18">City Bell</text></g>
+    <g><circle cx="225" cy="295" r="15" fill="#005B7F"/><text x="225" y="335" font-size="18">Gonnet</text></g>
+    <g><circle cx="360" cy="320" r="15" fill="#005B7F"/><text x="360" y="360" font-size="18">Los Hornos</text></g>
+  </g>
+</svg>
