@@ -49,7 +49,7 @@ const problems = [
 ];
 
 const services = [
-  ["Consultorio ACIMCO", "Piloto demo", "Espacio mensual de consultas para socios.", "Legal, laboral, impositivo, municipal, seguridad e higiene."],
+  ["Consultoria ACIMCO", "Piloto demo", "Espacio mensual de consultas para socios.", "Legal, laboral, impositivo, municipal, seguridad e higiene."],
   ["Boletin sectorial", "Disponible demo", "Resumen mensual de precios, normativa, oportunidades, proveedores y alertas comerciales.", "Informacion breve, accionable y pensada para pymes."],
   ["Indice ACIMCO de Materiales", "Propuesta", "Reporte mensual de variacion por familia de materiales.", "Cemento, hierro, pinturas, sanitarios, aberturas y logistica."],
   ["Escuela ACIMCO", "Piloto", "Capacitaciones cortas para profesionalizar la operacion.", "Ventas, deposito, administracion, seguridad y herramientas digitales."],
@@ -60,17 +60,19 @@ const services = [
 ];
 
 const members = [
-  ["Corralon El Diagonal", "La Plata", "Corralon", "Comercio", "Materiales generales"],
-  ["Berisso Materiales", "Berisso", "Corralon", "Comercio", "Corralon y aridos"],
-  ["Ensenada Construye", "Ensenada", "Distribuidor", "Industria", "Distribucion"],
-  ["Hierros del Sur", "La Plata", "Hierros", "Industria", "Hierros y aceros"],
-  ["Sanitarios Norte", "City Bell", "Sanitarios", "Comercio", "Sanitarios y griferia"],
-  ["Obra Color", "Gonnet", "Pintureria", "Comercio", "Pinturas y revestimientos"],
-  ["Aberturas AMBA", "La Plata", "Aberturas", "Industria", "Aberturas"],
-  ["Logistica Materiales LP", "La Plata", "Logistica", "Servicio", "Transporte y distribucion"],
-  ["ConstruRed Los Hornos", "Los Hornos", "Corralon", "Comercio", "Materiales generales"],
-  ["Proveedor Industrial Sur", "Berisso", "Proveedor", "Proveedor adherente", "Proveedor adherente"]
+  { name: "Anacleto", city: "La Plata", category: "Sanitarios", type: "Comercio", sale: "Minorista", detail: "Ceramicos y sanitarios", logo: "WhatsApp Image 2026-05-26 at 17.52.52 (1).jpeg" },
+  { name: "Ctibor", city: "La Plata", category: "Proveedor", type: "Industria", sale: "Mayorista", detail: "Tecnologia en ladrillos", logo: "WhatsApp Image 2026-05-26 at 17.52.53 (4).jpeg" },
+  { name: "El Emporio", city: "Gonnet", category: "Corralon", type: "Comercio", sale: "Mayorista", detail: "Mejoras para el hogar", logo: "WhatsApp Image 2026-05-26 at 17.52.52 (6).jpeg" },
+  { name: "El Mirador", city: "Los Hornos", category: "Corralon", type: "Comercio", sale: "Minorista", detail: "Materiales de construccion", logo: "WhatsApp Image 2026-05-26 at 17.52.52 (7).jpeg" },
+  { name: "Gallardo", city: "Berisso", category: "Corralon", type: "Comercio", sale: "Minorista", detail: "Materiales para la construccion", logo: "WhatsApp Image 2026-05-26 at 17.52.52 (9).jpeg" },
+  { name: "Sanicentro", city: "La Plata", category: "Sanitarios", type: "Comercio", sale: "Minorista", detail: "Sanitarios", logo: "WhatsApp Image 2026-05-26 at 17.52.52.jpeg" },
+  { name: "La Estacion", city: "La Plata", category: "Corralon", type: "Comercio", sale: "Minorista", detail: "Materiales de construccion", logo: "WhatsApp Image 2026-05-26 at 17.52.53 (2).jpeg" },
+  { name: "Cerymat", city: "City Bell", category: "Sanitarios", type: "Comercio", sale: "Minorista", detail: "Ceramicos y materiales", logo: "WhatsApp Image 2026-05-26 at 17.52.53 (3).jpeg" },
+  { name: "Madeco", city: "La Plata", category: "Corralon", type: "Comercio", sale: "Minorista", detail: "Materiales para la construccion", logo: "WhatsApp Image 2026-05-26 at 17.52.53 (6).jpeg" },
+  { name: "Guanzetti", city: "La Plata", category: "Corralon", type: "Comercio", sale: "Minorista", detail: "Materiales de construccion", logo: "WhatsApp Image 2026-05-26 at 17.52.53.jpeg" }
 ];
+
+const brandLogo = (file) => `/Marcas/${encodeURIComponent(file)}`;
 
 const courses = [
   ["Venta consultiva en mostrador", "2 hs", "vendedores y encargados"],
@@ -129,21 +131,57 @@ function Services() {
   );
 }
 
+function AcimcoVerifica() {
+  return (
+    <section className="section guarantee-section" id="verifica">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="guarantee-seal">
+          <img src="/Sello%20de%20aprovacion/sello.png" alt="Sello ACIMCO Verifica" />
+        </div>
+        <article className="guarantee-copy">
+          <p className="eyebrow">Nuevo servicio para socios</p>
+          <h2>ACIMCO Verifica</h2>
+          <p className="lead-text">Una iniciativa destinada a fortalecer la confianza entre comercios y consumidores, identificando a los negocios adheridos que forman parte de una red institucional activa, responsable y comprometida con el desarrollo local.</p>
+          <div className="guarantee-points">
+            <div><strong>Respaldo institucional</strong><span>El sello distingue a los comercios vinculados a ACIMCO y refuerza su pertenencia a una red sectorial.</span></div>
+            <div><strong>Mayor visibilidad</strong><span>Ayuda a que el cliente reconozca negocios adheridos con presencia institucional y compromiso local.</span></div>
+            <div><strong>Senal de confianza</strong><span>Ofrece una referencia clara de seriedad, respaldo y participacion dentro de la camara.</span></div>
+          </div>
+          <blockquote>Donde está el sello, hay comercio un local con respaldo y garantia institucional.</blockquote>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 function Directory() {
-  const [filters, setFilters] = useState({ localidad: "", rubro: "", tipo: "" });
-  const options = (index) => [...new Set(members.map((m) => m[index]))].sort();
-  const filtered = useMemo(() => members.filter((m) => (!filters.localidad || m[1] === filters.localidad) && (!filters.rubro || m[2] === filters.rubro) && (!filters.tipo || m[3] === filters.tipo)), [filters]);
+  const [filters, setFilters] = useState({ localidad: "", rubro: "", tipo: "", venta: "" });
+  const options = (key) => [...new Set(members.map((m) => m[key]))].sort();
+  const visibleMembers = useMemo(() => members.slice(0, 8), []);
+  const filtered = useMemo(() => visibleMembers.filter((m) => (!filters.localidad || m.city === filters.localidad) && (!filters.rubro || m.category === filters.rubro) && (!filters.tipo || m.type === filters.tipo) && (!filters.venta || m.sale === filters.venta)), [filters, visibleMembers]);
   const set = (key, value) => setFilters((current) => ({ ...current, [key]: value }));
   return (
     <section className="section" id="socios">
-      <SectionHeader kicker="Directorio demo de socios" title="Una red visible genera mas oportunidades">Tu empresa tambien puede aparecer en el directorio de socios.</SectionHeader>
-      <div className="mx-auto mb-6 grid max-w-7xl gap-3 md:grid-cols-3">
-        <Select label="Localidad" value={filters.localidad} onChange={(v) => set("localidad", v)} values={options(1)} />
-        <Select label="Rubro" value={filters.rubro} onChange={(v) => set("rubro", v)} values={options(2)} />
-        <Select label="Tipo" value={filters.tipo} onChange={(v) => set("tipo", v)} values={options(3)} />
+      <SectionHeader kicker="Directorio de socios" title="Una red visible genera mas oportunidades">Diez marcas destacadas para mostrar una red sectorial concreta. Localidades y rubros se presentan como datos demo editables.</SectionHeader>
+      <div className="mx-auto mb-6 grid max-w-7xl gap-3 md:grid-cols-4">
+        <Select label="Localidad" value={filters.localidad} onChange={(v) => set("localidad", v)} values={options("city")} />
+        <Select label="Rubro" value={filters.rubro} onChange={(v) => set("rubro", v)} values={options("category")} />
+        <Select label="Tipo" value={filters.tipo} onChange={(v) => set("tipo", v)} values={options("type")} />
+        <Select label="Venta" value={filters.venta} onChange={(v) => set("venta", v)} values={options("sale")} />
       </div>
-      <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {filtered.map((m) => <article className="member-card" key={m[0]}><div>{m[0].slice(0, 2).toUpperCase()}</div><h3>{m[0]}</h3><p>{m[1]} · {m[4]}</p><span>{m[2]} · {m[3]}</span></article>)}
+      <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {filtered.map((m) => (
+          <article className="member-card" key={m.name}>
+            <div className="member-logo">
+              <img src={brandLogo(m.logo)} alt={`Logo ${m.name}`} loading="lazy" />
+            </div>
+            <div className="member-content">
+              <h3>{m.name}</h3>
+              <p>{m.city} · {m.detail}</p>
+              <div className="member-tags"><span>{m.category}</span><span>{m.type}</span><span>{m.sale}</span></div>
+            </div>
+          </article>
+        ))}
       </div>
       <div className="cta-strip mx-auto mt-7 max-w-7xl"><h3>Tu empresa tambien puede aparecer en el directorio de socios.</h3><a className="btn-primary" href="#afiliarme">Solicitar afiliacion</a></div>
     </section>
@@ -222,6 +260,7 @@ function App() {
           <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">{benefits.map((b) => <Card key={b[1]} icon={b[0]} title={b[1]}>{b[2]}</Card>)}</div>
         </section>
         <Services />
+        <AcimcoVerifica />
         <section className="section">
           <SectionHeader kicker="Activos institucionales" title="Una presencia moderna para mostrar actividad y servicios" />
           <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
