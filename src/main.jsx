@@ -368,7 +368,7 @@ function WhyJoin() {
 function AcimcoVerifica() {
   return (
     <section className="section guarantee-section" id="verifica">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="guarantee-panel mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="guarantee-seal">
           <img src="/Sello%20de%20aprovacion/sello.png" alt="Sello ACIMCO Verifica" />
         </div>
