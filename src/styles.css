@@ -4,7 +4,7 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply m-0 overflow-x-hidden font-sans text-acimco-ink antialiased; background: #F3F3F3; }
+  body { @apply m-0 overflow-x-hidden font-sans text-acimco-ink antialiased; background: #F7F9FC; }
   h1 { @apply max-w-3xl text-5xl font-black leading-[1.02] tracking-normal text-acimco-deep md:text-6xl; }
   h2 { @apply text-3xl font-black leading-tight tracking-normal text-acimco-deep md:text-5xl; }
   h3 { @apply text-xl font-extrabold leading-tight tracking-normal text-acimco-deep; }
@@ -41,13 +41,13 @@
   .btn-primary { @apply inline-flex min-h-11 items-center justify-center rounded-lg bg-acimco-green px-5 py-3 text-center font-extrabold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft; }
   .btn-ghost { @apply inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-3 text-center font-extrabold text-acimco-deep transition hover:-translate-y-0.5 hover:shadow-soft; }
   .btn-large { @apply min-h-14 px-6; }
-  .hero { @apply grid items-center gap-10 px-5 py-12 md:px-16 md:py-20 xl:grid-cols-[0.92fr_1fr]; background: #F3F3F3; }
+  .hero { @apply grid items-center gap-10 px-5 py-12 md:px-16 md:py-20 xl:grid-cols-[0.92fr_1fr]; background: #F7F9FC; }
   .lead { @apply mt-6 max-w-2xl text-xl text-slate-600; }
   .eyebrow { @apply mb-3 text-sm font-black uppercase tracking-[0.08em] text-acimco-sky; }
   .metrics { @apply mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4; }
   .metrics span { @apply rounded-lg border border-slate-200 bg-white p-4 text-sm font-extrabold text-acimco-deep shadow-sm; }
   .hero-art img { @apply w-full rounded-lg shadow-soft; }
-  .news-carousel { @apply px-5 py-10 md:px-16; background: #F3F3F3; }
+  .news-carousel { @apply px-5 py-10 md:px-16; background: #F7F9FC; }
   .news-shell { @apply mx-auto grid w-full min-w-0 max-w-5xl gap-5; }
   .news-heading { @apply mx-auto w-full min-w-0 max-w-3xl text-center; }
   .news-heading h2 { @apply text-3xl md:text-4xl; }
@@ -71,15 +71,15 @@
   .news-dots { @apply mt-4 flex justify-center gap-2; }
   .news-dots button { @apply h-3 w-3 rounded-full bg-slate-300 transition; }
   .news-dots button.active { @apply w-8 bg-acimco-sky; }
-  .section { @apply px-5 py-14 md:px-16 md:py-20; background: #F3F3F3; }
+  .section { @apply px-5 py-14 md:px-16 md:py-20; background: #F7F9FC; }
   .section.bg-white,
   .section.bg-acimco-soft {
-    background: #F3F3F3;
+    background: #F7F9FC;
   }
   .card { @apply rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft; }
   .card p, .mini-card p { @apply mt-3 text-slate-600; }
   .card strong { @apply mt-3 block font-extrabold text-acimco-petrol; }
-  .join-hook { @apply py-14 md:py-16; background: #F3F3F3; }
+  .join-hook { @apply py-14 md:py-16; background: #F7F9FC; }
   .join-header { @apply mx-auto grid max-w-5xl justify-items-start gap-5 text-left; }
   .join-title-block { @apply mx-auto w-full max-w-5xl text-center; }
   .join-title-block .eyebrow { @apply mx-auto max-w-[58rem] translate-x-[8px] text-left; }
@@ -121,13 +121,13 @@
   .status.propuesta { @apply bg-amber-50 text-amber-700; }
   .status.piloto, .status.piloto-demo { @apply bg-sky-50 text-acimco-sky; }
   .guarantee-section { background: #F7F9FC; }
-  .guarantee-panel { @apply rounded-lg border border-slate-200 bg-white p-6 shadow-sm md:p-8; }
+  .guarantee-panel { @apply p-0; background: transparent; }
   .guarantee-seal { @apply grid min-h-[360px] place-items-center p-4; }
   .guarantee-seal img { @apply max-h-[330px] w-full object-contain drop-shadow-sm; }
   .guarantee-copy { @apply p-0; }
   .guarantee-copy .lead-text { @apply mt-5 text-lg text-slate-600; }
   .guarantee-points { @apply mt-6 grid gap-3 md:grid-cols-3; }
-  .guarantee-points div { @apply rounded-lg bg-acimco-soft p-4; }
+  .guarantee-points div { @apply rounded-lg border border-slate-200 bg-white p-4; }
   .guarantee-points strong { @apply block text-sm font-black text-acimco-deep; }
   .guarantee-points span { @apply mt-2 block text-sm leading-relaxed text-slate-600; }
   .guarantee-copy blockquote { @apply mt-6 border-l-4 border-acimco-green bg-emerald-50 px-5 py-4 text-lg font-black text-acimco-deep; }
@@ -170,7 +170,7 @@
   .course-body p { @apply text-slate-600; }
   .course-body small { @apply block self-start text-sm font-bold text-acimco-petrol; }
   .course-button { @apply mt-1 inline-flex w-fit min-h-12 items-center justify-center self-end rounded-lg bg-acimco-deep px-5 py-3 font-black text-white transition hover:-translate-y-0.5 hover:bg-acimco-petrol; }
-  .affiliate-section { background: #F3F3F3; }
+  .affiliate-section { background: #F7F9FC; }
   .affiliate-header { @apply mx-auto mb-8 max-w-4xl text-center; }
   .affiliate-header p:not(.eyebrow) { @apply mt-4 text-lg text-slate-600; }
   .affiliation-steps {
