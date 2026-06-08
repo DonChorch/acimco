@@ -1,0 +1,9 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Paso 1 - Formulario</title>
+  <desc id="desc">Icono de formulario para iniciar la afiliación ACIMCO</desc>
+  <path d="M44 35H77L88 46V91C88 94.3137 85.3137 97 82 97H44C40.6863 97 38 94.3137 38 91V41C38 37.6863 40.6863 35 44 35Z" stroke="#007AC2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M77 35V47H88" stroke="#007AC2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M49 57H75" stroke="#007AC2" stroke-width="5" stroke-linecap="round"/>
+  <path d="M49 70H78" stroke="#007AC2" stroke-width="5" stroke-linecap="round"/>
+  <path d="M49 83H67" stroke="#007AC2" stroke-width="5" stroke-linecap="round"/>
+</svg>

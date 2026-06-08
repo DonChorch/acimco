@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
@@ -33,19 +33,37 @@ const benefits = [
   ["informacion", "Informacion de mercado", "Boletines, alertas e informes para comprar, vender y decidir mejor."],
   ["asesoramiento", "Asesoramiento", "Consultas legales, laborales, impositivas, municipales, tecnicas y de seguridad e higiene."],
   ["capacitacion", "Capacitacion", "Talleres para duenos, vendedores, administracion, encargados y personal de deposito."],
-  ["red", "Red de negocios", "Eventos, rondas, comites y contacto con empresas del ecosistema."],
+  ["red", "Red de negocios", "Eventos, rondas, mesas de trabajo sectorial y contacto con empresas del ecosistema."],
   ["visibilidad", "Visibilidad", "Presencia en directorio de socios, campanas institucionales y difusion sectorial."],
   ["socio", "Beneficios comerciales", "Convenios con proveedores, servicios profesionales, software, seguros, logistica y capacitacion."],
   ["eventos", "Agenda comun", "Espacios de trabajo para resolver problemas compartidos del rubro."]
 ];
 
-const problems = [
-  ["precios", "Cambios de precios dificiles de anticipar.", "La informacion temprana ayuda a cuidar margen y stock."],
-  ["informacion", "Falta de informacion regional confiable.", "Una lectura territorial permite decidir con contexto."],
-  ["logistica", "Problemas de stock, logistica y costos.", "La red ayuda a identificar cuellos de botella comunes."],
-  ["normativa", "Dudas sobre normativa, habilitaciones y tramites.", "El consultorio ordena consultas y prioridades."],
-  ["capacitacion", "Necesidad de capacitar equipos.", "Formatos cortos para mostrador, deposito y administracion."],
-  ["visibilidad", "Baja visibilidad conjunta del sector.", "Una camara activa comunica mejor el peso regional."]
+const affiliationProblems = [
+  {
+    icon: "precios",
+    title: "Costos que cambian sin aviso",
+    impact: "Cuando las listas se actualizan sin previsibilidad, podés perder margen, comprar tarde o presupuestar con referencias desactualizadas.",
+    solution: "Los afiliados reciben un boletin con el Indice ACIMCO de variación de precios.",
+    cta: "Acceder a información",
+    href: "#informes"
+  },
+  {
+    icon: "informacion",
+    title: "Decisiones con información dispersa",
+    impact: "Muchas decisiones comerciales se toman con datos sueltos, listas aisladas o lecturas parciales del mercado.",
+    solution: "Como afiliado recibís información ordenada para leer mejor el contexto del sector.",
+    cta: "Ver informes",
+    href: "#informes"
+  },
+  {
+    icon: "red",
+    title: "Problemas comunes tratados en soledad",
+    impact: "Logística, stock, habilitaciones, cargas y descargas o proveedores suelen repetirse en muchas empresas.",
+    solution: "ACIMCO: Como afiliado participás en mesas de trabajo sectorial, agenda compartida para que puedas participar.",
+    cta: "Participar de la red",
+    href: "#servicios"
+  }
 ];
 
 const services = [
@@ -54,7 +72,7 @@ const services = [
   ["Indice ACIMCO de Materiales", "Propuesta", "Reporte mensual de variacion por familia de materiales.", "Cemento, hierro, pinturas, sanitarios, aberturas y logistica."],
   ["Escuela ACIMCO", "Piloto", "Capacitaciones cortas para profesionalizar la operacion.", "Ventas, deposito, administracion, seguridad y herramientas digitales."],
   ["Directorio de socios", "Demo web", "Mapa y buscador de empresas asociadas.", "Visibilidad por rubro, localidad y tipo de empresa."],
-  ["Comites por rubro", "Propuesta", "Mesas de trabajo para corralones, distribuidores, industrias, proveedores y logistica.", "Agenda concreta por desafio compartido."],
+  ["Mesas de trabajo sectorial", "Propuesta", "Espacios de trabajo para corralones, distribuidores, industrias, proveedores y logistica.", "Agenda concreta por desafio compartido."],
   ["Club de beneficios", "En desarrollo", "Convenios para generar ahorro y mejores condiciones para socios.", "Servicios profesionales, seguros, tecnologia, capacitacion y logistica."],
   ["Observatorio normativo", "Propuesta", "Seguimiento de normativa municipal, provincial, habilitaciones, cargas y descargas.", "Alertas para operar con menos incertidumbre."]
 ];
@@ -75,12 +93,94 @@ const members = [
 const brandLogo = (file) => `/Marcas/${encodeURIComponent(file)}`;
 
 const courses = [
-  ["Venta consultiva en mostrador", "2 hs", "vendedores y encargados"],
-  ["Gestion de stock y deposito", "3 hs", "encargados, administracion y deposito"],
-  ["WhatsApp Business para comercios de materiales", "2 hs", "duenos, vendedores y administracion"],
-  ["Seguridad e higiene en depositos", "3 hs", "empresas con deposito y logistica"],
-  ["Facturacion, cobranzas y gestion administrativa", "2 hs", "administracion y duenos"],
-  ["Marketing digital para corralones y proveedores", "2 hs", "comercios, industrias y proveedores"]
+  {
+    title: "Venta consultiva en mostrador",
+    duration: "2 hs",
+    audience: "Vendedores y encargados",
+    lessons: "4 modulos",
+    description: "Herramientas practicas para mejorar la atencion, detectar necesidades y cerrar ventas con mayor claridad.",
+    image: "/capacitacion.svg"
+  },
+  {
+    title: "Gestion de stock y deposito",
+    duration: "3 hs",
+    audience: "Encargados, administracion y deposito",
+    lessons: "5 modulos",
+    description: "Criterios para ordenar inventario, mejorar reposicion y reducir errores operativos en el dia a dia.",
+    image: "/corralon.svg"
+  },
+  {
+    title: "WhatsApp Business para comercios de materiales",
+    duration: "2 hs",
+    audience: "Duenos, vendedores y administracion",
+    lessons: "4 modulos",
+    description: "Uso comercial de mensajes, etiquetas, respuestas rapidas y seguimiento de consultas para convertir mejor.",
+    image: "/dashboard-precios.svg"
+  },
+  {
+    title: "Seguridad e higiene en depositos",
+    duration: "3 hs",
+    audience: "Empresas con deposito y logistica",
+    lessons: "5 modulos",
+    description: "Buenas practicas para equipos, circulacion, carga, descarga y prevencion dentro de espacios operativos.",
+    image: "/logistica.svg"
+  },
+  {
+    title: "Facturacion, cobranzas y gestion administrativa",
+    duration: "2 hs",
+    audience: "Administracion y duenos",
+    lessons: "4 modulos",
+    description: "Pautas para ordenar procesos administrativos, cobranzas, registros y comunicacion con clientes.",
+    image: "/informe-pulso.svg"
+  },
+  {
+    title: "Marketing digital para corralones y proveedores",
+    duration: "2 hs",
+    audience: "Comercios, industrias y proveedores",
+    lessons: "4 modulos",
+    description: "Acciones simples para mejorar presencia online, consultas comerciales y visibilidad local.",
+    image: "/reunion-sectorial.svg"
+  }
+];
+
+const featuredNews = [
+  {
+    tag: "Informe sectorial",
+    date: "Junio 2026",
+    title: "Pulso de materiales para el Gran La Plata",
+    text: "Lectura demo de variaciones, demanda y alertas para comercios e industrias del sector.",
+    href: "#informes"
+  },
+  {
+    tag: "Afiliacion",
+    date: "Convocatoria abierta",
+    title: "Nueva red de empresas verificadas por ACIMCO",
+    text: "Una propuesta para fortalecer visibilidad, confianza comercial y pertenencia institucional.",
+    href: "#afiliacion"
+  },
+  {
+    tag: "Capacitaciones",
+    date: "Agenda demo",
+    title: "Talleres breves para ventas, deposito y administracion",
+    text: "Instancias pensadas para profesionalizar el dia a dia de comercios de materiales.",
+    href: "#capacitaciones"
+  },
+  {
+    tag: "Territorio",
+    date: "La Plata, Berisso y Ensenada",
+    title: "Agenda regional para problemas compartidos",
+    text: "Logistica, habilitaciones, stock y proveedores tratados desde una mirada sectorial.",
+    href: "#servicios"
+  }
+];
+
+const navItems = [
+  ["servicios", "Servicios"],
+  ["beneficios", "Beneficios"],
+  ["socios", "Socios"],
+  ["informes", "Informes"],
+  ["capacitaciones", "Capacitaciones"],
+  ["afiliacion", "Afiliacion"]
 ];
 
 const objections = [
@@ -88,7 +188,7 @@ const objections = [
   ["No veo que gano pagando una cuota.", "La afiliacion debe traducirse en informacion, asesoramiento, red, visibilidad, ahorro por convenios y representacion sectorial."],
   ["Ya tengo mis proveedores.", "La red no reemplaza tus proveedores; amplia contactos, informacion y capacidad de negociacion."],
   ["Esto es para empresas grandes.", "La propuesta esta pensada especialmente para pymes del rubro que necesitan respaldo y herramientas concretas."],
-  ["Las camaras no resuelven problemas concretos.", "La web demo muestra un modelo de camara orientado a servicios: consultorio, informes, capacitaciones, directorio, comites y beneficios."]
+  ["Las camaras no resuelven problemas concretos.", "La web demo muestra un modelo de camara orientado a servicios: consultoria, informes, capacitaciones, directorio, mesas de trabajo sectorial y beneficios."]
 ];
 
 function SectionHeader({ kicker, title, children }) {
@@ -99,6 +199,29 @@ function Card({ icon, title, children }) {
   return <article className="card group"><Icon name={icon} className="mb-4 h-9 w-9 text-acimco-sky transition group-hover:text-acimco-green" /><h3>{title}</h3><p>{children}</p></article>;
 }
 
+function useSwipeNavigation(onPrev, onNext) {
+  const start = useRef(null);
+
+  const onTouchStart = (event) => {
+    const touch = event.touches[0];
+    start.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const onTouchEnd = (event) => {
+    if (!start.current) return;
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - start.current.x;
+    const deltaY = touch.clientY - start.current.y;
+    start.current = null;
+
+    if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
+    if (deltaX < 0) onNext();
+    else onPrev();
+  };
+
+  return { onTouchStart, onTouchEnd };
+}
+
 function HeroVisual() {
   return (
     <div className="hero-art" aria-label="Ilustracion institucional ACIMCO">
@@ -107,13 +230,55 @@ function HeroVisual() {
   );
 }
 
+function NewsCarousel() {
+  const [active, setActive] = useState(0);
+  const next = () => setActive((index) => (index + 1) % featuredNews.length);
+  const prev = () => setActive((index) => (index - 1 + featuredNews.length) % featuredNews.length);
+  const swipeHandlers = useSwipeNavigation(prev, next);
+
+  return (
+    <section className="news-carousel" id="noticias" aria-label="Noticias destacadas ACIMCO">
+      <div className="news-shell">
+        <div className="news-heading">
+          <p className="eyebrow">Noticias</p>
+          <h2>Noticias ACIMCO</h2>
+          <p>Actualidad, informes y convocatorias para empresas del sector.</p>
+        </div>
+        <div className="news-slider">
+          <button className="news-arrow left" type="button" onClick={prev} aria-label="Noticia anterior">‹</button>
+          <div className="news-viewport" {...swipeHandlers}>
+            <div className="news-track" style={{ transform: `translateX(-${active * 100}%)` }}>
+              {featuredNews.map((item) => (
+                <a className="news-card" href={item.href} key={item.title}>
+                  <div className="news-meta"><span>{item.tag}</span><small>{item.date}</small></div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+          <button className="news-arrow right" type="button" onClick={next} aria-label="Noticia siguiente">›</button>
+          <div className="news-dots" aria-label="Paginacion de noticias">
+            {featuredNews.map((item, index) => (
+              <button className={active === index ? "active" : ""} type="button" key={item.title} onClick={() => setActive(index)} aria-label={`Ver noticia ${index + 1}`} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Services() {
   const [active, setActive] = useState(0);
   const service = services[active];
+  const next = () => setActive((index) => (index + 1) % services.length);
+  const prev = () => setActive((index) => (index - 1 + services.length) % services.length);
+  const swipeHandlers = useSwipeNavigation(prev, next);
   return (
     <section className="section bg-acimco-soft" id="servicios">
       <SectionHeader kicker="Servicios recurrentes" title="Servicios pensados para el dia a dia de las empresas" />
-      <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[340px_1fr]">
+      <div className="services-desktop mx-auto grid max-w-7xl gap-5 lg:grid-cols-[340px_1fr]">
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
           {services.map((item, index) => <button className={`tab ${active === index ? "active" : ""}`} key={item[0]} onClick={() => setActive(index)}>{item[0]}</button>)}
         </div>
@@ -126,6 +291,75 @@ function Services() {
             <div className="rounded-lg bg-acimco-soft p-5"><strong>Resultado buscado</strong><span>Menos incertidumbre, mas informacion y una red activa para resolver temas concretos.</span></div>
           </div>
         </article>
+      </div>
+      <div className="services-mobile mx-auto max-w-7xl" {...swipeHandlers}>
+        <div className="service-mobile-card">
+          <span className={`status ${service[1].toLowerCase().replaceAll(" ", "-")}`}>{service[1]}</span>
+          <h3>{service[0]}</h3>
+          <p>{service[2]}</p>
+          <div className="service-mobile-detail"><strong>Incluye</strong><span>{service[3]}</span></div>
+          <div className="service-mobile-detail muted"><strong>Resultado buscado</strong><span>Menos incertidumbre, mas informacion y una red activa para resolver temas concretos.</span></div>
+        </div>
+        <div className="service-mobile-controls">
+          <button type="button" onClick={prev} aria-label="Servicio anterior">‹</button>
+          <div className="service-mobile-dots" aria-label="Paginacion de servicios">
+            {services.map((item, index) => (
+              <button className={active === index ? "active" : ""} type="button" key={item[0]} onClick={() => setActive(index)} aria-label={`Ver servicio ${index + 1}`} />
+            ))}
+          </div>
+          <button type="button" onClick={next} aria-label="Servicio siguiente">›</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyJoin() {
+  return (
+    <section className="section join-hook" id="por-que-asociarse">
+      <div className="mx-auto max-w-7xl">
+        <div className="join-header">
+          <div className="join-title-block">
+            <p className="eyebrow">Por qué asociarse</p>
+            <h2>Cuando el sector cambia, trabajar solo cuesta más.</h2>
+          </div>
+          <p>Precios que se mueven, costos difíciles de anticipar, información dispersa, problemas de stock, trámites y baja visibilidad. ACIMCO reúne a comercios, industrias y proveedores de materiales de construcción para transformar problemas individuales en información útil, representación sectorial y oportunidades compartidas.</p>
+          <div className="join-actions">
+            <a className="btn-primary" href="#afiliacion">Quiero asociar mi empresa</a>
+            <a className="btn-ghost" href="#beneficios">Ver beneficios para socios</a>
+          </div>
+        </div>
+
+        <div className="join-cards mobile-parallel-grid">
+          {affiliationProblems.map((item) => (
+            <article className="join-card" key={item.title}>
+              <div className="join-card-main">
+                <Icon name={item.icon} />
+                <h3>{item.title}</h3>
+                <p>{item.impact}</p>
+              </div>
+              <div className="join-card-solution">{item.solution}</div>
+              <a href={item.href}>{item.cta}</a>
+            </article>
+          ))}
+        </div>
+
+        <div className="join-support">
+          <h3>También ayudamos a ordenar</h3>
+          <ul>
+            <li>Capacitación para vendedores, administración y depósito.</li>
+            <li>Consultas legales, laborales, impositivas y municipales.</li>
+            <li>Visibilidad de tu empresa en el directorio de socios.</li>
+          </ul>
+        </div>
+
+        <div className="join-final">
+          <div>
+            <h3>La afiliación convierte problemas aislados en soluciones compartidas.</h3>
+            <p>Sumá tu empresa a una red regional que representa, informa, conecta y fortalece al sector.</p>
+          </div>
+          <a className="btn-primary" href="#afiliacion">Solicitar afiliación</a>
+        </div>
       </div>
     </section>
   );
@@ -162,14 +396,14 @@ function Directory() {
   const set = (key, value) => setFilters((current) => ({ ...current, [key]: value }));
   return (
     <section className="section" id="socios">
-      <SectionHeader kicker="Directorio de socios" title="Una red visible genera mas oportunidades">Diez marcas destacadas para mostrar una red sectorial concreta. Localidades y rubros se presentan como datos demo editables.</SectionHeader>
+      <SectionHeader kicker="Directorio de socios" title="Busca comercios verificados por ACIMCO, compra con confianza">Los comercios aqui listados pertenecen a ACIMCO, y estan verificados.</SectionHeader>
       <div className="mx-auto mb-6 grid max-w-7xl gap-3 md:grid-cols-4">
         <Select label="Localidad" value={filters.localidad} onChange={(v) => set("localidad", v)} values={options("city")} />
         <Select label="Rubro" value={filters.rubro} onChange={(v) => set("rubro", v)} values={options("category")} />
         <Select label="Tipo" value={filters.tipo} onChange={(v) => set("tipo", v)} values={options("type")} />
         <Select label="Venta" value={filters.venta} onChange={(v) => set("venta", v)} values={options("sale")} />
       </div>
-      <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="members-grid mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {filtered.map((m) => (
           <article className="member-card" key={m.name}>
             <div className="member-logo">
@@ -183,7 +417,7 @@ function Directory() {
           </article>
         ))}
       </div>
-      <div className="cta-strip mx-auto mt-7 max-w-7xl"><h3>Tu empresa tambien puede aparecer en el directorio de socios.</h3><a className="btn-primary" href="#afiliarme">Solicitar afiliacion</a></div>
+      <div className="cta-strip mx-auto mt-7 max-w-7xl"><h3>Tu empresa tambien puede aparecer en el directorio de socios.</h3><a className="btn-primary" href="#afiliacion">Solicitar afiliacion</a></div>
     </section>
   );
 }
@@ -199,7 +433,7 @@ function Reports() {
       <SectionHeader kicker="Informes e inteligencia sectorial" title="Informacion para comprar, vender y decidir mejor">Datos simulados para demostracion.</SectionHeader>
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.95fr_1fr]">
         <article className="report-card"><div className="report-top"><strong>Pulso de Materiales Gran La Plata</strong><small>Demo · Mayo 2026</small></div>{data.map(([name, value]) => <div className="bar" key={name}><span style={{ width: `${value * 10}%` }} /><b>{name}</b><em>+{value}%</em></div>)}</article>
-        <div className="grid gap-4 md:grid-cols-2">{["Alertas de precios", "Tendencias de demanda", "Novedades normativas", "Oportunidades comerciales", "Agenda de proveedores", "Relevamiento de stock"].map((item) => <article className="mini-card" key={item}><Icon name={item.includes("precio") ? "precios" : item.includes("normativas") ? "normativa" : "informacion"} /><h3>{item}</h3><p>Contenido demo para mostrar una camara activa y util.</p></article>)}</div>
+        <div className="report-mini-grid grid gap-4 md:grid-cols-2">{["Alertas de precios", "Tendencias de demanda", "Novedades normativas", "Oportunidades comerciales", "Agenda de proveedores", "Relevamiento de stock"].map((item) => <article className="mini-card" key={item}><Icon name={item.includes("precio") ? "precios" : item.includes("normativas") ? "normativa" : "informacion"} /><h3>{item}</h3><p>Contenido demo para mostrar una camara activa y util.</p></article>)}</div>
       </div>
     </section>
   );
@@ -207,23 +441,62 @@ function Reports() {
 
 function AffiliateForm() {
   const [sent, setSent] = useState(false);
+  const affiliationSteps = [
+    ["/acimco-step-1-form.svg?v=2", "01", "Completás la solicitud", "Dejanos tus datos de contacto, empresa, rubro y localidad."],
+    ["/acimco-step-2-call.svg?v=2", "02", "Coordinamos una llamada", "Conocemos tu actividad, respondemos consultas y te explicamos cómo funciona la afiliación."],
+    ["/acimco-step-4-network.svg?v=2", "03", "Activamos tu afiliación", "Tu empresa accede a información sectorial, beneficios, espacios de trabajo y visibilidad institucional."]
+  ];
   return (
-    <section className="section bg-acimco-soft" id="afiliarme">
-      <SectionHeader kicker="Afiliacion" title="Asociarse tiene que ser simple" />
+    <section className="section affiliate-section" id="afiliacion">
       <div className="mx-auto max-w-7xl">
-        <div className="steps">{["Completas el formulario.", "Coordinamos una llamada.", "Identificamos la categoria de socio.", "Activamos beneficios y visibilidad.", "Tu empresa empieza a participar de la red."].map((step, index) => <span key={step}><b>{index + 1}</b>{step}</span>)}</div>
-        <div className="categories">{["Socio comercio", "Socio industria", "Socio proveedor", "Socio adherente", "Socio institucional"].map((cat) => <span key={cat}>{cat}<small>Consultar categoria</small></span>)}</div>
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_360px]">
+        <div className="affiliate-header">
+          <p className="eyebrow">AFILIACIÓN</p>
+          <h2>Afiliarse es simple</h2>
+          <p>Afiliá tu empresa y accedé a información sectorial, beneficios, visibilidad y representación regional.</p>
+        </div>
+
+        <div className="affiliation-steps">
+          {affiliationSteps.map(([icon, number, title, text], index) => (
+            <article className="affiliation-step" key={title}>
+              <div className="step-top">
+                <b className="step-number">{number}</b>
+                <span className="step-icon"><img src={icon} alt="" aria-hidden="true" /></span>
+              </div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="affiliate-layout">
           <form className="form-card" onSubmit={(event) => { event.preventDefault(); if (event.currentTarget.checkValidity()) setSent(true); }}>
-            {["Nombre y apellido", "Empresa", "Rubro", "Localidad", "Telefono / WhatsApp"].map((label) => <label className="field" key={label}>{label}<input required /></label>)}
-            <label className="field">Email<input type="email" required /></label>
-            <label className="field md:col-span-2">Mensaje<textarea rows="4" defaultValue="Quiero recibir informacion para asociarme a ACIMCO." /></label>
-            <label className="check md:col-span-2"><input type="checkbox" required /> Quiero recibir informacion para asociarme</label>
-            <button className="btn-primary md:col-span-2" type="submit">Enviar solicitud</button>
+            <div className="form-intro">
+              <h3>Datos personales y de contacto</h3>
+              <p>Completá el formulario para iniciar tu solicitud de afiliación.</p>
+            </div>
+            <label className="field">Nombre y apellido *<input required placeholder="Ej: Mariana Pérez" /></label>
+            <label className="field">Empresa / Razón social *<input required placeholder="Ej: Corralón del Centro" /></label>
+            <label className="field">Rubro / Actividad *<input required placeholder="Ej: Materiales generales" /></label>
+            <label className="field">Localidad *<input required placeholder="Ej: La Plata" /></label>
+            <label className="field">Teléfono / WhatsApp *<input required inputMode="tel" placeholder="Ej: 221 555 1234" /></label>
+            <label className="field">Email<input type="email" required placeholder="Ej: contacto@empresa.com" /></label>
+            <label className="field md:col-span-2">Mensaje<textarea rows="4" placeholder="Ej: Quiero conocer los beneficios de afiliación para mi empresa." /></label>
+            <label className="check md:col-span-2"><input type="checkbox" required /> <span>Quiero recibir información para asociarme<small>Acepto recibir novedades y beneficios de ACIMCO.</small></span></label>
+            <button className="btn-primary md:col-span-2" type="submit">Enviar solicitud de afiliación</button>
           </form>
-          <aside className="grid gap-4">
-            <img className="asset-card" src="/credencial-socio.svg" alt="Credencial Socio ACIMCO" />
-            <img className="asset-card" src="/sticker-asociada.svg" alt="Sticker Empresa asociada ACIMCO" />
+          <aside className="affiliate-side">
+            <article className="verified-card">
+              <div>
+                <span>AFILIADO VERIFICADO</span>
+                <h3>Tu comercio o establecimiento pasa a estar verificado por ACIMCO</h3>
+                <p>Generando confianza y atrayendo futuros clientes.</p>
+              </div>
+              <img src="/Sello%20de%20aprovacion/sello.png" alt="Sello ACIMCO Verifica" />
+            </article>
+            <article className="affiliate-support-card">
+              <h3>Construimos juntos una red más fuerte</h3>
+              <p>La Plata · Berisso · Ensenada</p>
+            </article>
           </aside>
         </div>
       </div>
@@ -233,12 +506,55 @@ function AffiliateForm() {
 }
 
 function App() {
+  const [activeSection, setActiveSection] = useState("top");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const sections = ["top", ...navItems.map(([id]) => id)]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible?.target?.id) setActiveSection(visible.target.id);
+    }, { rootMargin: "-35% 0px -50% 0px", threshold: [0.08, 0.2, 0.45] });
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const protectDemo = (event) => {
+      event.preventDefault();
+    };
+    document.addEventListener("contextmenu", protectDemo);
+    document.addEventListener("copy", protectDemo);
+    document.addEventListener("cut", protectDemo);
+    return () => {
+      document.removeEventListener("contextmenu", protectDemo);
+      document.removeEventListener("copy", protectDemo);
+      document.removeEventListener("cut", protectDemo);
+    };
+  }, []);
+
   return (
     <>
       <header className="site-header">
         <a className="brand" href="#top"><img src="/SVG/logo.svg" alt="ACIMCO" /><span><small>Red regional de materiales de construccion</small></span></a>
-        <nav><a href="#beneficios">Beneficios</a><a href="#servicios">Servicios</a><a href="#socios">Socios</a><a href="#informes">Informes</a><a href="#capacitaciones">Capacitaciones</a><a href="#afiliarme">Afiliacion</a></nav>
-        <div className="hidden gap-2 xl:flex"><a className="btn-ghost" href="#beneficios">Ver beneficios</a><a className="btn-primary" href="#afiliarme">Quiero asociarme</a></div>
+        <button className={`menu-toggle ${menuOpen ? "open" : ""}`} type="button" onClick={() => setMenuOpen((open) => !open)} aria-label="Abrir menu" aria-expanded={menuOpen}>
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav className={menuOpen ? "open" : ""}>
+          {navItems.map(([id, label]) => (
+            <a className={activeSection === id ? "active" : ""} href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>{label}</a>
+          ))}
+        </nav>
+        <div className="hidden gap-2 xl:flex"><a className="btn-ghost" href="#beneficios">Ver beneficios</a><a className="btn-primary" href="#afiliacion">Quiero asociarme</a></div>
       </header>
       <main id="top">
         <section className="hero">
@@ -246,52 +562,44 @@ function App() {
             <p className="eyebrow">La Plata · Berisso · Ensenada</p>
             <h1>Suma tu empresa a la red regional de materiales de construccion</h1>
             <p className="lead">ACIMCO representa, informa y conecta a comercios, industrias y proveedores del sector en La Plata, Berisso y Ensenada.</p>
-            <div className="mt-7 flex flex-wrap gap-3"><a className="btn-primary btn-large" href="#afiliarme">Solicitar afiliacion</a><a className="btn-ghost btn-large" href="#beneficios">Conocer beneficios</a></div>
-            <div className="metrics">{["+80 anos de trayectoria", "Red sectorial regional", "Comercios, industrias y proveedores", "La Plata · Berisso · Ensenada"].map((m) => <span key={m}>{m}</span>)}</div>
+            <div className="mt-7 flex flex-wrap gap-3"><a className="btn-primary btn-large" href="#afiliacion">Solicitar afiliacion</a><a className="btn-ghost btn-large" href="#beneficios">Conocer beneficios</a></div>
+            <div className="metrics">{["+80 años de trayectoria", "Red sectorial regional", "Comercios, industrias y proveedores", "La Plata · Berisso · Ensenada"].map((m) => <span key={m}>{m}</span>)}</div>
           </div>
           <HeroVisual />
         </section>
-        <section className="section">
-          <SectionHeader kicker="Problemas que resuelve ACIMCO" title="El sector necesita mas informacion, mas red y mas representacion" />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-3">{problems.map((p) => <Card key={p[1]} icon={p[0]} title={p[1]}>{p[2]} <strong>ACIMCO puede ayudarte a ordenar este problema.</strong></Card>)}</div>
-        </section>
+        <NewsCarousel />
+        <WhyJoin />
+        <Services />
         <section className="section" id="beneficios">
           <SectionHeader kicker="Beneficios" title="Que gana tu empresa al asociarse" />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">{benefits.map((b) => <Card key={b[1]} icon={b[0]} title={b[1]}>{b[2]}</Card>)}</div>
+          <div className="benefits-grid mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">{benefits.map((b) => <Card key={b[1]} icon={b[0]} title={b[1]}>{b[2]}</Card>)}</div>
         </section>
-        <Services />
         <AcimcoVerifica />
-        <section className="section">
-          <SectionHeader kicker="Activos institucionales" title="Una presencia moderna para mostrar actividad y servicios" />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-            <img className="asset-card" src="/corralon.svg" alt="Corralon moderno de materiales" />
-            <img className="asset-card" src="/dashboard-precios.svg" alt="Dashboard de precios de materiales" />
-            <img className="asset-card" src="/informe-pulso.svg" alt="Mockup de informe Pulso de Materiales" />
-          </div>
-        </section>
         <Directory />
         <Reports />
         <section className="section" id="capacitaciones">
           <SectionHeader kicker="Capacitaciones y eventos" title="Capacitaciones cortas para profesionalizar la operacion" />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-3">{courses.map((c) => <article className="card" key={c[0]}><Icon name="capacitacion" /><h3>{c[0]}</h3><p>Duracion: {c[1]}. Publico: {c[2]}.</p></article>)}</div>
-          <div className="mx-auto mt-6 grid max-w-7xl gap-4 md:grid-cols-3">
-            {["Ronda de proveedores demo", "Mesa de corralones regionales", "Encuentro de capacitacion comercial"].map((event) => <article className="mini-card" key={event}><Icon name="eventos" /><h3>{event}</h3><p>Calendario institucional demo para mostrar actividad, convocatoria y continuidad.</p></article>)}
+          <div className="courses-grid mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
+            {courses.slice(0, 3).map((c) => (
+              <article className="course-card" key={c.title}>
+                <div className="course-image">
+                  <img src={c.image} alt="" aria-hidden="true" />
+                  <span>ACIMCO</span>
+                </div>
+                <div className="course-body">
+                  <h3>{c.title}</h3>
+                  <div className="course-meta">
+                    <span><Icon name="informacion" />{c.lessons}</span>
+                    <span><Icon name="capacitacion" />{c.duration}</span>
+                  </div>
+                  <p>{c.description}</p>
+                  <small>Publico: {c.audience}</small>
+                  <a className="course-button" href="#afiliacion">Inscribirme ahora</a>
+                </div>
+              </article>
+            ))}
           </div>
-          <div className="mx-auto mt-6 grid max-w-7xl gap-4 md:grid-cols-3"><img className="asset-card" src="/capacitacion.svg" alt="Capacitacion a vendedores" /><img className="asset-card" src="/reunion-sectorial.svg" alt="Reunion empresaria sectorial" /><img className="asset-card" src="/logistica.svg" alt="Camion y logistica de materiales" /></div>
-        </section>
-        <section className="section bg-white">
-          <SectionHeader kicker="Novedades institucionales" title="Prueba de actividad para una camara viva" />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-            {["Nuevo boletin sectorial demo", "Convocatoria a comites por rubro", "Relevamiento de servicios para socios"].map((news) => <article className="mini-card" key={news}><p className="eyebrow">Actividad demo</p><h3>{news}</h3><p>Contenido editable para comunicar agenda, reuniones, informes y avances institucionales.</p></article>)}
-          </div>
-        </section>
-        <section className="section bg-acimco-soft">
-          <SectionHeader kicker="Area territorial" title="Una camara con foco regional">Una agenda territorial concreta permite trabajar problemas reales: logistica, habilitaciones, cargas y descargas, proveedores, capacitacion y visibilidad comercial.</SectionHeader>
-          <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[1fr_0.8fr]"><img className="asset-card" src="/mapa-regional.svg" alt="Mapa abstracto La Plata Berisso Ensenada" /><div className="grid gap-4 sm:grid-cols-2">{["La Plata", "Berisso", "Ensenada", "City Bell", "Gonnet", "Los Hornos"].map((city) => <article className="mini-card" key={city}><Icon name="mapa" /><h3>{city}</h3><p>Nodo territorial demo para empresas asociadas.</p></article>)}</div></div>
-        </section>
-        <section className="section">
-          <SectionHeader kicker="Casos de uso" title="Un beneficio distinto segun el tipo de empresa" />
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-5">{["Corralones|Necesitan precios, logistica, stock, capacitacion y representacion local.", "Distribuidores|Necesitan red comercial, eventos, informacion de demanda y nuevos canales.", "Fabricantes|Necesitan llegada al canal, visibilidad y rondas con comercios.", "Proveedores de servicios|Necesitan acceder a empresas del rubro y generar convenios.", "Comercios especializados|Pinturerias, sanitarios, aberturas, hierros y terminaciones necesitan difusion, informacion y red."].map((item) => { const [title, text] = item.split("|"); return <article className="card use-card" key={title}><h3>{title}</h3><p>{text}</p></article>; })}</div>
+          <div className="mx-auto mt-6 flex max-w-7xl justify-center"><a className="btn-ghost" href="#afiliacion">Ver mas capacitaciones</a></div>
         </section>
         <AffiliateForm />
         <section className="section bg-acimco-soft" id="faq">
@@ -299,7 +607,8 @@ function App() {
           <div className="mx-auto grid max-w-4xl gap-3">{objections.map((o) => <details className="faq" key={o[0]}><summary>{o[0]}</summary><p>{o[1]}</p></details>)}</div>
         </section>
       </main>
-      <footer><div><img src="/SVG/logo.svg" alt="ACIMCO" /><p>Red regional de materiales de construccion · La Plata · Berisso · Ensenada</p><p>Contacto demo · WhatsApp demo · Email demo</p><p>Sitio demo para presentacion institucional.</p></div><nav><a href="#beneficios">Beneficios</a><a href="#servicios">Servicios</a><a href="#socios">Socios</a><a href="#informes">Informes</a><a href="#afiliarme">Afiliacion</a></nav></footer>
+      <footer><div><img src="/SVG/logo.svg" alt="ACIMCO" /><p>Red regional de materiales de construccion · La Plata · Berisso · Ensenada</p><p>Contacto demo · WhatsApp demo · Email demo</p><p>Sitio demo para presentacion institucional.</p><p className="legal-note">Demo, diseño, copy y código protegidos. Uso no autorizado, copia o redistribucion no permitidos.</p></div><nav><a href="#beneficios">Beneficios</a><a href="#servicios">Servicios</a><a href="#socios">Socios</a><a href="#informes">Informes</a><a href="#afiliacion">Afiliacion</a></nav></footer>
+      <a className={`back-top ${activeSection === "top" ? "" : "visible"}`} href="#top" aria-label="Volver arriba">↑</a>
       <a className="whatsapp" href="https://wa.me/5492210000000?text=Hola%2C%20quiero%20recibir%20informacion%20para%20asociar%20mi%20empresa%20a%20ACIMCO." target="_blank" rel="noreferrer"><Icon name="whatsapp" /> <span>Consultar afiliacion</span></a>
     </>
   );

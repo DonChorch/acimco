@@ -1,0 +1,7 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Paso 2 - Llamada</title>
+  <desc id="desc">Icono de teléfono para coordinación de llamada ACIMCO</desc>
+  <path d="M45.5534 38.5L55.2658 48.2124C57.0637 50.0103 57.2376 52.8677 55.669 54.8703L51.6714 59.9733C55.5396 67.441 61.559 73.4604 69.0267 77.3286L74.1297 73.331C76.1323 71.7624 78.9897 71.9363 80.7876 73.7342L90.5 83.4466C92.433 85.3796 92.433 88.5143 90.5 90.4473L86.8176 94.1298C84.6267 96.3207 81.3226 96.9441 78.5063 95.6584C56.6435 85.6815 42.3185 71.3565 32.3416 49.4937C31.0559 46.6774 31.6793 43.3733 33.8702 41.1824L37.5527 37.5C39.4857 35.567 42.6204 35.567 44.5534 37.5L45.5534 38.5Z" stroke="#65A928" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M73 39C81.8366 39 89 46.1634 89 55" stroke="#65A928" stroke-width="5" stroke-linecap="round"/>
+  <path d="M73 51C75.2091 51 77 52.7909 77 55" stroke="#65A928" stroke-width="5" stroke-linecap="round"/>
+</svg>

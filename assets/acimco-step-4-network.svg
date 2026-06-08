@@ -1,0 +1,10 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Paso 4 - Participación en red</title>
+  <desc id="desc">Icono de red de empresas para participación en ACIMCO</desc>
+  <circle cx="64" cy="46" r="13" stroke="#EF8A18" stroke-width="5"/>
+  <path d="M41 91C43.5 78.5 51.5 72 64 72C76.5 72 84.5 78.5 87 91" stroke="#EF8A18" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="34" cy="59" r="10" stroke="#EF8A18" stroke-width="5"/>
+  <path d="M18 88C20.2 78 26.2 73 34 73C39 73 43.3 75 46.5 79" stroke="#EF8A18" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="94" cy="59" r="10" stroke="#EF8A18" stroke-width="5"/>
+  <path d="M110 88C107.8 78 101.8 73 94 73C89 73 84.7 75 81.5 79" stroke="#EF8A18" stroke-width="5" stroke-linecap="round"/>
+</svg>

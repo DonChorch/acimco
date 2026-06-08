@@ -1,4 +1,8 @@
 node_modules/
 dist/
 vite-dev.log
+*.log
+.codex/
+exports/
+acimco-landing-conversion-test/
 assets/Marcas/contact-sheet.jpg
