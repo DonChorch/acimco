@@ -175,12 +175,12 @@ const featuredNews = [
 ];
 
 const navItems = [
-  ["servicios", "Servicios"],
-  ["beneficios", "Beneficios"],
-  ["socios", "Socios"],
-  ["informes", "Informes"],
-  ["capacitaciones", "Capacitaciones"],
-  ["afiliacion", "Afiliacion"]
+  { id: "servicios", label: "Servicios", href: "/#servicios" },
+  { id: "beneficios", label: "Beneficios", href: "/#beneficios" },
+  { id: "socios", label: "Socios", href: "/socios" },
+  { id: "informes", label: "Informes", href: "/#informes" },
+  { id: "capacitaciones", label: "Capacitaciones", href: "/#capacitaciones" },
+  { id: "afiliacion", label: "Afiliacion", href: "/#afiliacion" }
 ];
 
 const objections = [
@@ -446,22 +446,81 @@ function AcimcoVerifica() {
 }
 
 function Directory() {
-  const [filters, setFilters] = useState({ localidad: "", rubro: "", tipo: "", venta: "" });
+  const [filters, setFilters] = useState({ query: "", rubro: "", tipo: "", venta: "" });
   const options = (key) => [...new Set(members.map((m) => m[key]))].sort();
-  const visibleMembers = useMemo(() => members.slice(0, 8), []);
-  const filtered = useMemo(() => visibleMembers.filter((m) => (!filters.localidad || m.city === filters.localidad) && (!filters.rubro || m.category === filters.rubro) && (!filters.tipo || m.type === filters.tipo) && (!filters.venta || m.sale === filters.venta)), [filters, visibleMembers]);
+  const filtered = useMemo(() => members.filter((m) => {
+    const search = filters.query.trim().toLowerCase();
+    const haystack = [m.name, m.city, m.category, m.type, m.sale, m.detail].join(" ").toLowerCase();
+    return (!search || haystack.includes(search)) && (!filters.rubro || m.category === filters.rubro) && (!filters.tipo || m.type === filters.tipo) && (!filters.venta || m.sale === filters.venta);
+  }), [filters]);
   const set = (key, value) => setFilters((current) => ({ ...current, [key]: value }));
-  return (
-    <section className="section" id="socios">
-      <SectionHeader kicker="Directorio de socios" title="Busca comercios verificados por ACIMCO, compra con confianza">Los comercios aqui listados pertenecen a ACIMCO, y estan verificados.</SectionHeader>
-      <div className="mx-auto mb-6 grid max-w-7xl gap-3 md:grid-cols-4">
-        <Select label="Localidad" value={filters.localidad} onChange={(v) => set("localidad", v)} values={options("city")} />
-        <Select label="Rubro" value={filters.rubro} onChange={(v) => set("rubro", v)} values={options("category")} />
-        <Select label="Tipo" value={filters.tipo} onChange={(v) => set("tipo", v)} values={options("type")} />
-        <Select label="Venta" value={filters.venta} onChange={(v) => set("venta", v)} values={options("sale")} />
+  const clearFilters = () => setFilters({ query: "", rubro: "", tipo: "", venta: "" });
+  const hasFilters = Object.values(filters).some(Boolean);
+  const ChipGroup = ({ label, keyName, values }) => (
+    <div className="directory-chip-group">
+      <span>{label}</span>
+      <div>
+        <button className={!filters[keyName] ? "active" : ""} type="button" onClick={() => set(keyName, "")}>Todos</button>
+        {values.map((item) => <button className={filters[keyName] === item ? "active" : ""} type="button" key={item} onClick={() => set(keyName, item)}>{item}</button>)}
       </div>
+    </div>
+  );
+  return (
+    <section className="section directory-page" id="socios">
+      <SectionHeader kicker="Directorio de socios" title="Busca comercios verificados por ACIMCO, compra con confianza">Los comercios aqui listados pertenecen a ACIMCO, y estan verificados.</SectionHeader>
+      <div className="directory-search-panel mx-auto mb-7 max-w-7xl">
+        <label className="directory-search">
+          <span>Que estas buscando?</span>
+          <input value={filters.query} onChange={(event) => set("query", event.target.value)} placeholder="Buscar por comercio, rubro o localidad" />
+        </label>
+        <details className="directory-advanced-panel">
+          <summary>filtros avanzados</summary>
+          <div className="directory-filter-layout">
+            <ChipGroup label="Rubro" keyName="rubro" values={options("category")} />
+            <div className="directory-advanced">
+              <Select label="Tipo de empresa" value={filters.tipo} onChange={(v) => set("tipo", v)} values={options("type")} />
+              <Select label="Venta" value={filters.venta} onChange={(v) => set("venta", v)} values={options("sale")} />
+            </div>
+          </div>
+        </details>
+        <div className="directory-results-bar">
+          <p><strong>{filtered.length}</strong> comercios verificados encontrados</p>
+          {hasFilters && <button type="button" onClick={clearFilters}>Limpiar filtros</button>}
+        </div>
+      </div>
+      {filtered.length > 0 ? (
+        <div className="members-grid mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {filtered.map((m) => (
+            <article className="member-card" key={m.name}>
+              <div className="member-logo">
+                <img src={brandLogo(m.logo)} alt={`Logo ${m.name}`} loading="lazy" />
+              </div>
+              <div className="member-content">
+                <h3>{m.name}</h3>
+                <p>{m.city} - {m.detail}</p>
+                <div className="member-tags"><span>{m.category}</span><span>{m.type}</span><span>{m.sale}</span></div>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="directory-empty mx-auto max-w-7xl">
+          <h3>No encontramos comercios con esos filtros.</h3>
+          <p>Proba cambiar localidad, rubro o texto de busqueda.</p>
+          <button className="btn-primary" type="button" onClick={clearFilters}>Ver todos los comercios</button>
+        </div>
+      )}
+      <div className="cta-strip mx-auto mt-7 max-w-7xl"><h3>Tu empresa tambien puede aparecer en el directorio de socios.</h3><a className="btn-primary" href="/#afiliacion">Solicitar asociacion</a></div>
+    </section>
+  );
+}
+
+function DirectoryPreview() {
+  return (
+    <section className="section directory-preview" id="socios">
+      <SectionHeader kicker="Socios" title="Una red visible de comercios verificados">Conocé una muestra de empresas vinculadas a ACIMCO y accedé al directorio completo con filtros por localidad, rubro, tipo y venta.</SectionHeader>
       <div className="members-grid mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {filtered.map((m) => (
+        {members.slice(0, 4).map((m) => (
           <article className="member-card" key={m.name}>
             <div className="member-logo">
               <img src={brandLogo(m.logo)} alt={`Logo ${m.name}`} loading="lazy" />
@@ -474,7 +533,10 @@ function Directory() {
           </article>
         ))}
       </div>
-      <div className="cta-strip mx-auto mt-7 max-w-7xl"><h3>Tu empresa tambien puede aparecer en el directorio de socios.</h3><a className="btn-primary" href="#afiliacion">Solicitar asociacion</a></div>
+      <div className="cta-strip mx-auto mt-7 max-w-7xl">
+        <h3>Explorá el directorio completo de socios ACIMCO.</h3>
+        <a className="btn-primary" href="/socios">Ver directorio de socios</a>
+      </div>
     </section>
   );
 }
@@ -568,9 +630,10 @@ function AffiliateForm() {
 function App() {
   const [activeSection, setActiveSection] = useState("top");
   const [menuOpen, setMenuOpen] = useState(false);
+  const isSociosPage = window.location.pathname === "/socios";
 
   useEffect(() => {
-    const sections = ["top", ...navItems.map(([id]) => id)]
+    const sections = ["top", ...navItems.map((item) => item.id)]
       .map((id) => document.getElementById(id))
       .filter(Boolean);
 
@@ -600,22 +663,45 @@ function App() {
     };
   }, []);
 
-  return (
-    <>
+  const header = (
       <header className="site-header">
-        <a className="brand" href="#top"><img src="/SVG/logo.svg" alt="ACIMCO" /><span><small>Red regional de materiales de construccion</small></span></a>
+        <a className="brand" href="/#top"><img src="/SVG/logo.svg" alt="ACIMCO" /><span><small>Red regional de materiales de construccion</small></span></a>
         <button className={`menu-toggle ${menuOpen ? "open" : ""}`} type="button" onClick={() => setMenuOpen((open) => !open)} aria-label="Abrir menu" aria-expanded={menuOpen}>
           <span />
           <span />
           <span />
         </button>
         <nav className={menuOpen ? "open" : ""}>
-          {navItems.map(([id, label]) => (
-            <a className={activeSection === id ? "active" : ""} href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>{label}</a>
-          ))}
+          {navItems.map((item) => {
+            const href = !isSociosPage && item.id === "socios" ? "#socios" : item.href;
+            return <a className={(isSociosPage ? item.id === "socios" : activeSection === item.id) ? "active" : ""} href={href} key={item.id} onClick={() => setMenuOpen(false)}>{item.label}</a>;
+          })}
         </nav>
-        <div className="hidden gap-2 xl:flex"><a className="btn-ghost" href="#beneficios">Ver beneficios</a><a className="btn-primary" href="#afiliacion">Quiero asociarme</a></div>
+        <div className="hidden gap-2 xl:flex"><a className="btn-ghost" href="/#beneficios">Ver beneficios</a><a className="btn-primary" href="/#afiliacion">Quiero asociarme</a></div>
       </header>
+  );
+
+  const footer = (
+      <footer><div><img src="/SVG/logo.svg" alt="ACIMCO" /><p>Red regional de materiales de construccion - La Plata - Berisso - Ensenada</p><p>Contacto demo - WhatsApp demo - Email demo</p><p>Sitio demo para presentacion institucional.</p><p className="legal-note">Demo, diseno, copy y codigo protegidos. Uso no autorizado, copia o redistribucion no permitidos.</p></div><nav><a href="/#beneficios">Beneficios</a><a href="/#servicios">Servicios</a><a href="/socios">Socios</a><a href="/#informes">Informes</a><a href="/#afiliacion">Afiliacion</a></nav></footer>
+  );
+
+  if (isSociosPage) {
+    return (
+      <>
+        {header}
+        <main id="top">
+          <Directory />
+        </main>
+        {footer}
+        <a className={`back-top ${activeSection === "top" ? "" : "visible"}`} href="#top" aria-label="Volver arriba">↑</a>
+        <a className="whatsapp" href="https://wa.me/5492210000000?text=Hola%2C%20quiero%20recibir%20informacion%20para%20asociar%20mi%20empresa%20a%20ACIMCO." target="_blank" rel="noreferrer"><Icon name="whatsapp" /> <span>Consultar afiliacion</span></a>
+      </>
+    );
+  }
+
+  return (
+    <>
+      {header}
       <main id="top">
         <section className="hero">
           <div>
@@ -635,7 +721,7 @@ function App() {
           <div className="benefits-grid mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">{benefits.map((b) => <Card key={b[1]} icon={b[0]} title={b[1]}>{b[2]}</Card>)}</div>
         </section>
         <AcimcoVerifica />
-        <Directory />
+        <DirectoryPreview />
         <Reports />
         <section className="section" id="capacitaciones">
           <SectionHeader kicker="Capacitaciones y eventos" title="Capacitaciones cortas para profesionalizar la operacion" />
@@ -667,7 +753,7 @@ function App() {
           <div className="mx-auto grid max-w-4xl gap-3">{objections.map((o) => <details className="faq" key={o[0]}><summary>{o[0]}</summary><p>{o[1]}</p></details>)}</div>
         </section>
       </main>
-      <footer><div><img src="/SVG/logo.svg" alt="ACIMCO" /><p>Red regional de materiales de construccion · La Plata · Berisso · Ensenada</p><p>Contacto demo · WhatsApp demo · Email demo</p><p>Sitio demo para presentacion institucional.</p><p className="legal-note">Demo, diseño, copy y código protegidos. Uso no autorizado, copia o redistribucion no permitidos.</p></div><nav><a href="#beneficios">Beneficios</a><a href="#servicios">Servicios</a><a href="#socios">Socios</a><a href="#informes">Informes</a><a href="#afiliacion">Afiliacion</a></nav></footer>
+      {footer}
       <a className={`back-top ${activeSection === "top" ? "" : "visible"}`} href="#top" aria-label="Volver arriba">↑</a>
       <a className="whatsapp" href="https://wa.me/5492210000000?text=Hola%2C%20quiero%20recibir%20informacion%20para%20asociar%20mi%20empresa%20a%20ACIMCO." target="_blank" rel="noreferrer"><Icon name="whatsapp" /> <span>Consultar afiliacion</span></a>
     </>
