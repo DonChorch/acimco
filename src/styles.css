@@ -90,6 +90,7 @@
   .join-card-main { @apply grid content-start; }
   .join-card svg { @apply mb-4 h-9 w-9 text-acimco-sky; }
   .join-card p { @apply mt-3 text-sm leading-relaxed text-slate-600; }
+  .join-card-extra { @apply grid; }
   .join-card-solution { @apply mt-5 min-h-[78px] rounded-lg bg-acimco-pale p-4 text-sm font-extrabold leading-relaxed text-acimco-petrol; }
   .join-card a { @apply mt-5 inline-flex text-sm font-black text-acimco-green; }
   .join-support { @apply mt-5 grid gap-4 rounded-lg border border-slate-200 bg-acimco-soft p-5 md:grid-cols-[0.35fr_1fr]; }
@@ -298,9 +299,14 @@
   .verified-card h3 { @apply mt-4 text-2xl; }
   .verified-card p { @apply mt-3 text-slate-600; }
   .verified-card img { @apply mx-auto w-[210px] max-w-full object-contain md:mx-0 lg:mx-auto xl:mx-0; }
-  .affiliate-support-card { @apply overflow-hidden rounded-lg border border-slate-200 bg-white p-0 shadow-sm; min-height: 260px; background: #ffffff url("/tarjeta%20afiliado.png") center / contain no-repeat; }
-  .affiliate-support-card h3,
-  .affiliate-support-card p { @apply sr-only; }
+  .affiliate-support-card { @apply relative overflow-hidden rounded-lg border border-slate-200 p-7 shadow-sm; min-height: 260px; background: linear-gradient(135deg, #003A5D 0%, #004D73 58%, #00A9E0 130%); }
+  .affiliate-support-card::after { content: ""; position: absolute; right: -56px; top: -70px; width: 210px; height: 210px; border-radius: 999px; background: rgba(0, 169, 224, 0.18); }
+  .affiliate-support-card .support-logo { @apply relative z-10 mb-6 grid h-20 w-44 place-items-center rounded-lg bg-white p-3; }
+  .affiliate-support-card .support-logo img { @apply max-h-full w-full object-contain; }
+  .affiliate-support-card span { @apply relative z-10 inline-flex text-lg font-black uppercase tracking-wide text-acimco-sky; }
+  .affiliate-support-card h3 { @apply relative z-10 mt-3 text-4xl font-black leading-none text-white; }
+  .affiliate-support-card p { @apply relative z-10 mt-5 max-w-xs text-lg font-bold text-slate-100; }
+  .affiliate-support-card small { @apply relative z-10 mt-7 block border-t border-sky-300/40 pt-4 text-sm font-black uppercase tracking-wide text-white; }
   .asset-card { @apply w-full rounded-lg border border-slate-200 bg-white shadow-sm; }
   .faq { @apply rounded-lg border border-slate-200 bg-white px-5 shadow-sm; }
   .modal { @apply fixed inset-0 z-50 grid place-items-center bg-acimco-deep/60 p-5; }
@@ -633,6 +639,65 @@
     min-height: auto;
     grid-template-rows: auto;
     padding: 1.15rem;
+  }
+
+  .join-cards.mobile-parallel-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .join-cards .join-card {
+    cursor: pointer;
+    overflow: hidden;
+    border-color: rgba(0, 58, 93, 0.12);
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .join-cards .join-card.is-open {
+    border-color: rgba(0, 169, 224, 0.42);
+    box-shadow: 0 14px 34px rgba(0, 58, 93, 0.1);
+  }
+
+  .join-cards .join-card-main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 0.85rem;
+  }
+
+  .join-cards .join-card svg {
+    margin-bottom: 0;
+  }
+
+  .join-cards .join-card h3 {
+    margin: 0;
+  }
+
+  .join-cards .join-card p {
+    grid-column: 1 / -1;
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 260ms ease, margin-top 260ms ease, opacity 180ms ease;
+  }
+
+  .join-cards .join-card-extra {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 280ms ease, opacity 180ms ease;
+  }
+
+  .join-cards .join-card.is-open p {
+    max-height: 160px;
+    margin-top: 0.75rem;
+    opacity: 1;
+  }
+
+  .join-cards .join-card.is-open .join-card-extra {
+    max-height: 240px;
+    opacity: 1;
   }
 
   .join-card-solution {

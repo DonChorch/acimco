@@ -1,6 +1,6 @@
 # ACIMCO Web Demo
 
-Landing institucional/comercial demo para ACIMCO, orientada a captar nuevos afiliados en La Plata, Berisso y Ensenada.
+Landing institucional/comercial demo para ACIMCO, orientada a captar nuevos socios en La Plata, Berisso y Ensenada.
 
 ## Tecnologia
 
@@ -64,8 +64,8 @@ npm run build
     |-- capacitacion.svg
     |-- logistica.svg
     |-- informe-pulso.svg
-    |-- credencial-afiliado.svg
-    |-- sticker-afiliada.svg
+    |-- credencial-socio.svg
+    |-- sticker-asociada.svg
     `-- pattern-construccion.svg
 ```
 
@@ -88,4 +88,4 @@ npm run build
 - Lenguaje claro para pymes del rubro, evitando tono burocratico.
 - Paleta basada en el celeste ACIMCO, azul institucional profundo y verde como acento de accion.
 - Cards compactas, CTAs recurrentes, secciones escaneables y foco B2B institucional.
-- Datos de informes, afiliados y actividad marcados como demo o simulados.
+- Datos de informes, socios y actividad marcados como demo o simulados.

@@ -16,7 +16,7 @@ const iconPaths = {
   logistica: ["M3 7h11v9H3z", "M14 10h4l3 3v3h-7z", "M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z", "M18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"],
   whatsapp: ["M5 20l1.2-4A8 8 0 1 1 9 18.2L5 20z", "M9 9c1 3 3 5 6 6l1-2-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2L9 9z"],
   mapa: ["m4 6 5-2 6 2 5-2v14l-5 2-6-2-5 2V6z", "M9 4v14", "M15 6v14"],
-  afiliado: ["M12 3 4 7v6c0 5 3.5 7 8 8 4.5-1 8-3 8-8V7l-8-4z", "m8.5 12 2.2 2.2L15.8 9"],
+  socio: ["M12 3 4 7v6c0 5 3.5 7 8 8 4.5-1 8-3 8-8V7l-8-4z", "m8.5 12 2.2 2.2L15.8 9"],
   comercio: ["M5 9h14l-1-4H6L5 9z", "M6 9v10h12V9", "M9 19v-6h6v6"]
 };
 
@@ -34,8 +34,8 @@ const benefits = [
   ["asesoramiento", "Asesoramiento", "Consultas legales, laborales, impositivas, municipales, tecnicas y de seguridad e higiene."],
   ["capacitacion", "Capacitacion", "Talleres para duenos, vendedores, administracion, encargados y personal de deposito."],
   ["red", "Red de negocios", "Eventos, rondas, mesas de trabajo sectorial y contacto con empresas del ecosistema."],
-  ["visibilidad", "Visibilidad", "Presencia en directorio de afiliados, campanas institucionales y difusion sectorial."],
-  ["afiliado", "Beneficios comerciales", "Convenios con proveedores, servicios profesionales, software, seguros, logistica y capacitacion."],
+  ["visibilidad", "Visibilidad", "Presencia en directorio de socios, campanas institucionales y difusion sectorial."],
+  ["socio", "Beneficios comerciales", "Convenios con proveedores, servicios profesionales, software, seguros, logistica y capacitacion."],
   ["eventos", "Agenda comun", "Espacios de trabajo para resolver problemas compartidos del rubro."]
 ];
 
@@ -44,7 +44,7 @@ const affiliationProblems = [
     icon: "precios",
     title: "Costos que cambian sin aviso",
     impact: "Cuando las listas se actualizan sin previsibilidad, podés perder margen, comprar tarde o presupuestar con referencias desactualizadas.",
-    solution: "Los afiliados reciben un boletin con el Indice ACIMCO de variación de precios.",
+    solution: "Los socios reciben un boletin con el Indice ACIMCO de variación de precios.",
     cta: "Acceder a información",
     href: "#informes"
   },
@@ -52,7 +52,7 @@ const affiliationProblems = [
     icon: "informacion",
     title: "Decisiones con información dispersa",
     impact: "Muchas decisiones comerciales se toman con datos sueltos, listas aisladas o lecturas parciales del mercado.",
-    solution: "Como afiliado recibís información ordenada para leer mejor el contexto del sector.",
+    solution: "Como socio recibís información ordenada para leer mejor el contexto del sector.",
     cta: "Ver informes",
     href: "#informes"
   },
@@ -60,20 +60,20 @@ const affiliationProblems = [
     icon: "red",
     title: "Problemas comunes tratados en soledad",
     impact: "Logística, stock, habilitaciones, cargas y descargas o proveedores suelen repetirse en muchas empresas.",
-    solution: "ACIMCO: Como afiliado participás en mesas de trabajo sectorial, agenda compartida para que puedas participar.",
+    solution: "ACIMCO: Como socio participás en mesas de trabajo sectorial, agenda compartida para que puedas participar.",
     cta: "Participar de la red",
     href: "#servicios"
   }
 ];
 
 const services = [
-  ["Consultoria ACIMCO", "Piloto demo", "Espacio mensual de consultas para afiliados.", "Legal, laboral, impositivo, municipal, seguridad e higiene."],
+  ["Consultoria ACIMCO", "Piloto demo", "Espacio mensual de consultas para socios.", "Legal, laboral, impositivo, municipal, seguridad e higiene."],
   ["Boletin sectorial", "Disponible demo", "Resumen mensual de precios, normativa, oportunidades, proveedores y alertas comerciales.", "Informacion breve, accionable y pensada para pymes."],
   ["Indice ACIMCO de Materiales", "Propuesta", "Reporte mensual de variacion por familia de materiales.", "Cemento, hierro, pinturas, sanitarios, aberturas y logistica."],
   ["Escuela ACIMCO", "Piloto", "Capacitaciones cortas para profesionalizar la operacion.", "Ventas, deposito, administracion, seguridad y herramientas digitales."],
-  ["Directorio de afiliados", "Demo web", "Mapa y buscador de empresas afiliadas.", "Visibilidad por rubro, localidad y tipo de empresa."],
+  ["Directorio de socios", "Demo web", "Mapa y buscador de empresas asociadas.", "Visibilidad por rubro, localidad y tipo de empresa."],
   ["Mesas de trabajo sectorial", "Propuesta", "Espacios de trabajo para corralones, distribuidores, industrias, proveedores y logistica.", "Agenda concreta por desafio compartido."],
-  ["Club de beneficios", "En desarrollo", "Convenios para generar ahorro y mejores condiciones para afiliados.", "Servicios profesionales, seguros, tecnologia, capacitacion y logistica."],
+  ["Club de beneficios", "En desarrollo", "Convenios para generar ahorro y mejores condiciones para socios.", "Servicios profesionales, seguros, tecnologia, capacitacion y logistica."],
   ["Observatorio normativo", "Propuesta", "Seguimiento de normativa municipal, provincial, habilitaciones, cargas y descargas.", "Alertas para operar con menos incertidumbre."]
 ];
 
@@ -177,7 +177,7 @@ const featuredNews = [
 const navItems = [
   ["servicios", "Servicios"],
   ["beneficios", "Beneficios"],
-  ["afiliados", "Afiliados"],
+  ["socios", "Socios"],
   ["informes", "Informes"],
   ["capacitaciones", "Capacitaciones"],
   ["afiliacion", "Afiliacion"]
@@ -315,31 +315,88 @@ function Services() {
 }
 
 function WhyJoin() {
+  const [activeMobileCard, setActiveMobileCard] = useState(null);
+  const joinCardRefs = useRef([]);
+
+  useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 640px)").matches;
+    if (!isMobile) {
+      setActiveMobileCard(null);
+      return undefined;
+    }
+
+    const selectCenteredCard = () => {
+      const viewportCenter = window.innerHeight / 2;
+      const centered = joinCardRefs.current
+        .filter(Boolean)
+        .map((card) => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height / 2;
+          return {
+            index: Number(card.dataset.index),
+            distance: Math.abs(cardCenter - viewportCenter),
+            visible: rect.bottom > 120 && rect.top < window.innerHeight - 120
+          };
+        })
+        .filter((item) => item.visible)
+        .sort((a, b) => a.distance - b.distance)[0];
+
+      if (centered) setActiveMobileCard(centered.index);
+    };
+
+    const observer = new IntersectionObserver(selectCenteredCard, {
+      threshold: [0, 0.25, 0.5, 0.75, 1],
+      rootMargin: "-10% 0px -10% 0px"
+    });
+
+    joinCardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    window.addEventListener("scroll", selectCenteredCard, { passive: true });
+    selectCenteredCard();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", selectCenteredCard);
+    };
+  }, []);
+
   return (
-    <section className="section join-hook" id="por-que-afiliarse">
+    <section className="section join-hook" id="por-que-asociarse">
       <div className="mx-auto max-w-7xl">
         <div className="join-header">
           <div className="join-title-block">
-            <p className="eyebrow">Por qué afiliarse</p>
+            <p className="eyebrow">Por qué asociarse</p>
             <h2>Cuando el sector cambia, trabajar solo cuesta más.</h2>
           </div>
           <p>Precios que se mueven, costos difíciles de anticipar, información dispersa, problemas de stock, trámites y baja visibilidad. ACIMCO reúne a comercios, industrias y proveedores de materiales de construcción para transformar problemas individuales en información útil, representación sectorial y oportunidades compartidas.</p>
           <div className="join-actions">
-            <a className="btn-primary" href="#afiliacion">Quiero afiliar mi empresa</a>
-            <a className="btn-ghost" href="#beneficios">Ver beneficios para afiliados</a>
+            <a className="btn-primary" href="#afiliacion">Quiero asociar mi empresa</a>
+            <a className="btn-ghost" href="#beneficios">Ver beneficios para socios</a>
           </div>
         </div>
 
         <div className="join-cards mobile-parallel-grid">
-          {affiliationProblems.map((item) => (
-            <article className="join-card" key={item.title}>
+          {affiliationProblems.map((item, index) => (
+            <article
+              className={`join-card ${activeMobileCard === index ? "is-open" : ""}`}
+              data-index={index}
+              key={item.title}
+              onClick={() => setActiveMobileCard(index)}
+              ref={(node) => {
+                joinCardRefs.current[index] = node;
+              }}
+            >
               <div className="join-card-main">
                 <Icon name={item.icon} />
                 <h3>{item.title}</h3>
                 <p>{item.impact}</p>
               </div>
-              <div className="join-card-solution">{item.solution}</div>
-              <a href={item.href}>{item.cta}</a>
+              <div className="join-card-extra">
+                <div className="join-card-solution">{item.solution}</div>
+                <a href={item.href}>{item.cta}</a>
+              </div>
             </article>
           ))}
         </div>
@@ -349,7 +406,7 @@ function WhyJoin() {
           <ul>
             <li>Capacitación para vendedores, administración y depósito.</li>
             <li>Consultas legales, laborales, impositivas y municipales.</li>
-            <li>Visibilidad de tu empresa en el directorio de afiliados.</li>
+            <li>Visibilidad de tu empresa en el directorio de socios.</li>
           </ul>
         </div>
 
@@ -358,7 +415,7 @@ function WhyJoin() {
             <h3>La afiliación convierte problemas aislados en soluciones compartidas.</h3>
             <p>Sumá tu empresa a una red regional que representa, informa, conecta y fortalece al sector.</p>
           </div>
-          <a className="btn-primary" href="#afiliacion">Solicitar afiliación</a>
+          <a className="btn-primary" href="#afiliacion">Solicitar asociación</a>
         </div>
       </div>
     </section>
@@ -373,7 +430,7 @@ function AcimcoVerifica() {
           <img src="/Sello%20de%20aprovacion/sello.png" alt="Sello ACIMCO Verifica" />
         </div>
         <article className="guarantee-copy">
-          <p className="eyebrow">Nuevo servicio para afiliados</p>
+          <p className="eyebrow">Nuevo servicio para socios</p>
           <h2>ACIMCO Verifica</h2>
           <p className="lead-text">Una iniciativa destinada a fortalecer la confianza entre comercios y consumidores, identificando a los negocios adheridos que forman parte de una red institucional activa, responsable y comprometida con el desarrollo local.</p>
           <div className="guarantee-points">
@@ -395,8 +452,8 @@ function Directory() {
   const filtered = useMemo(() => visibleMembers.filter((m) => (!filters.localidad || m.city === filters.localidad) && (!filters.rubro || m.category === filters.rubro) && (!filters.tipo || m.type === filters.tipo) && (!filters.venta || m.sale === filters.venta)), [filters, visibleMembers]);
   const set = (key, value) => setFilters((current) => ({ ...current, [key]: value }));
   return (
-    <section className="section" id="afiliados">
-      <SectionHeader kicker="Directorio de afiliados" title="Busca comercios verificados por ACIMCO, compra con confianza">Los comercios aqui listados pertenecen a ACIMCO, y estan verificados.</SectionHeader>
+    <section className="section" id="socios">
+      <SectionHeader kicker="Directorio de socios" title="Busca comercios verificados por ACIMCO, compra con confianza">Los comercios aqui listados pertenecen a ACIMCO, y estan verificados.</SectionHeader>
       <div className="mx-auto mb-6 grid max-w-7xl gap-3 md:grid-cols-4">
         <Select label="Localidad" value={filters.localidad} onChange={(v) => set("localidad", v)} values={options("city")} />
         <Select label="Rubro" value={filters.rubro} onChange={(v) => set("rubro", v)} values={options("category")} />
@@ -417,7 +474,7 @@ function Directory() {
           </article>
         ))}
       </div>
-      <div className="cta-strip mx-auto mt-7 max-w-7xl"><h3>Tu empresa tambien puede aparecer en el directorio de afiliados.</h3><a className="btn-primary" href="#afiliacion">Solicitar afiliacion</a></div>
+      <div className="cta-strip mx-auto mt-7 max-w-7xl"><h3>Tu empresa tambien puede aparecer en el directorio de socios.</h3><a className="btn-primary" href="#afiliacion">Solicitar asociacion</a></div>
     </section>
   );
 }
@@ -451,7 +508,7 @@ function AffiliateForm() {
       <div className="mx-auto max-w-7xl">
         <div className="affiliate-header">
           <p className="eyebrow">AFILIACIÓN</p>
-          <h2>Afiliarse es simple</h2>
+          <h2>Asociarse es simple</h2>
           <p>Afiliá tu empresa y accedé a información sectorial, beneficios, visibilidad y representación regional.</p>
         </div>
 
@@ -481,7 +538,7 @@ function AffiliateForm() {
             <label className="field">Teléfono / WhatsApp *<input required inputMode="tel" placeholder="Ej: 221 555 1234" /></label>
             <label className="field">Email<input type="email" required placeholder="Ej: contacto@empresa.com" /></label>
             <label className="field md:col-span-2">Mensaje<textarea rows="4" placeholder="Ej: Quiero conocer los beneficios de afiliación para mi empresa." /></label>
-            <label className="check md:col-span-2"><input type="checkbox" required /> <span>Quiero recibir información para afiliarme<small>Acepto recibir novedades y beneficios de ACIMCO.</small></span></label>
+            <label className="check md:col-span-2"><input type="checkbox" required /> <span>Quiero recibir información para asociarme<small>Acepto recibir novedades y beneficios de ACIMCO.</small></span></label>
             <button className="btn-primary md:col-span-2" type="submit">Enviar solicitud de afiliación</button>
           </form>
           <aside className="affiliate-side">
@@ -494,8 +551,11 @@ function AffiliateForm() {
               <img src="/Sello%20de%20aprovacion/sello.png" alt="Sello ACIMCO Verifica" />
             </article>
             <article className="affiliate-support-card">
-              <h3>Construimos juntos una red más fuerte</h3>
-              <p>La Plata · Berisso · Ensenada</p>
+              <div className="support-logo"><img src="/SVG/logo.svg" alt="ACIMCO" /></div>
+              <span>Socio ACIMCO</span>
+              <h3>Empresa asociada</h3>
+              <p>Red regional de materiales de construccion</p>
+              <small>Confianza · Respaldo · Compromiso con el sector</small>
             </article>
           </aside>
         </div>
@@ -554,7 +614,7 @@ function App() {
             <a className={activeSection === id ? "active" : ""} href={`#${id}`} key={id} onClick={() => setMenuOpen(false)}>{label}</a>
           ))}
         </nav>
-        <div className="hidden gap-2 xl:flex"><a className="btn-ghost" href="#beneficios">Ver beneficios</a><a className="btn-primary" href="#afiliacion">Quiero afiliarme</a></div>
+        <div className="hidden gap-2 xl:flex"><a className="btn-ghost" href="#beneficios">Ver beneficios</a><a className="btn-primary" href="#afiliacion">Quiero asociarme</a></div>
       </header>
       <main id="top">
         <section className="hero">
@@ -562,7 +622,7 @@ function App() {
             <p className="eyebrow">La Plata · Berisso · Ensenada</p>
             <h1>Suma tu empresa a la red regional de materiales de construccion</h1>
             <p className="lead">ACIMCO representa, informa y conecta a comercios, industrias y proveedores del sector en La Plata, Berisso y Ensenada.</p>
-            <div className="mt-7 flex flex-wrap gap-3"><a className="btn-primary btn-large" href="#afiliacion">Solicitar afiliacion</a><a className="btn-ghost btn-large" href="#beneficios">Conocer beneficios</a></div>
+            <div className="mt-7 flex flex-wrap gap-3"><a className="btn-primary btn-large" href="#afiliacion">Solicitar asociacion</a><a className="btn-ghost btn-large" href="#beneficios">Conocer beneficios</a></div>
             <div className="metrics">{["+80 años de trayectoria", "Red sectorial regional", "Comercios, industrias y proveedores", "La Plata · Berisso · Ensenada"].map((m) => <span key={m}>{m}</span>)}</div>
           </div>
           <HeroVisual />
@@ -571,7 +631,7 @@ function App() {
         <WhyJoin />
         <Services />
         <section className="section" id="beneficios">
-          <SectionHeader kicker="Beneficios" title="Que gana tu empresa al afiliarse" />
+          <SectionHeader kicker="Beneficios" title="Que gana tu empresa al asociarse" />
           <div className="benefits-grid mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">{benefits.map((b) => <Card key={b[1]} icon={b[0]} title={b[1]}>{b[2]}</Card>)}</div>
         </section>
         <AcimcoVerifica />
@@ -603,13 +663,13 @@ function App() {
         </section>
         <AffiliateForm />
         <section className="section bg-acimco-soft" id="faq">
-          <SectionHeader kicker="Preguntas frecuentes" title="Dudas habituales antes de afiliarse" />
+          <SectionHeader kicker="Preguntas frecuentes" title="Dudas habituales antes de asociarse" />
           <div className="mx-auto grid max-w-4xl gap-3">{objections.map((o) => <details className="faq" key={o[0]}><summary>{o[0]}</summary><p>{o[1]}</p></details>)}</div>
         </section>
       </main>
-      <footer><div><img src="/SVG/logo.svg" alt="ACIMCO" /><p>Red regional de materiales de construccion · La Plata · Berisso · Ensenada</p><p>Contacto demo · WhatsApp demo · Email demo</p><p>Sitio demo para presentacion institucional.</p><p className="legal-note">Demo, diseño, copy y código protegidos. Uso no autorizado, copia o redistribucion no permitidos.</p></div><nav><a href="#beneficios">Beneficios</a><a href="#servicios">Servicios</a><a href="#afiliados">Afiliados</a><a href="#informes">Informes</a><a href="#afiliacion">Afiliacion</a></nav></footer>
+      <footer><div><img src="/SVG/logo.svg" alt="ACIMCO" /><p>Red regional de materiales de construccion · La Plata · Berisso · Ensenada</p><p>Contacto demo · WhatsApp demo · Email demo</p><p>Sitio demo para presentacion institucional.</p><p className="legal-note">Demo, diseño, copy y código protegidos. Uso no autorizado, copia o redistribucion no permitidos.</p></div><nav><a href="#beneficios">Beneficios</a><a href="#servicios">Servicios</a><a href="#socios">Socios</a><a href="#informes">Informes</a><a href="#afiliacion">Afiliacion</a></nav></footer>
       <a className={`back-top ${activeSection === "top" ? "" : "visible"}`} href="#top" aria-label="Volver arriba">↑</a>
-      <a className="whatsapp" href="https://wa.me/5492210000000?text=Hola%2C%20quiero%20recibir%20informacion%20para%20afiliar%20mi%20empresa%20a%20ACIMCO." target="_blank" rel="noreferrer"><Icon name="whatsapp" /> <span>Consultar afiliacion</span></a>
+      <a className="whatsapp" href="https://wa.me/5492210000000?text=Hola%2C%20quiero%20recibir%20informacion%20para%20asociar%20mi%20empresa%20a%20ACIMCO." target="_blank" rel="noreferrer"><Icon name="whatsapp" /> <span>Consultar afiliacion</span></a>
     </>
   );
 }
